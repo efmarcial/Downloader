@@ -1,1 +1,1 @@
-web: gunicorn ytmp.wsgi
+web:gunicorn ytmp.wsgi
