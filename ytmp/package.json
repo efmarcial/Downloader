@@ -1,0 +1,33 @@
+{
+  "name": "ytmp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    , "start": "node index.js",
+    "build":"echo build script executed"
+    ,"export":"echo export correct"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efmarcial/YouTube-Downloader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/efmarcial/YouTube-Downloader/issues"
+  },
+  "homepage": "https://github.com/efmarcial/YouTube-Downloader#readme",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "node-sass": "^4.5.3",
+    "postcss-cli": "^4.1.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
