@@ -1,5 +1,5 @@
-import { helloWorld }from './HelloWorld';
-import $ from 'jquery';
-test(); //'hello world'
 
-let val = helloWorld(); 
+
+function helloWorld(){
+    console.log('Hello world from Java')
+};
