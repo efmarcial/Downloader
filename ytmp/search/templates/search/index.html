@@ -67,7 +67,16 @@
                 <div class="btn-group">
                   <a type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   <a id="demo" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
-                  
+                  <script>
+
+                        document.getElementById("Demo").onclick = function() {helloWorld()};
+
+
+                        function helloWorld() {
+
+                            document.getElementById("demo").innerHTML = "You CLicked Me";
+                        };
+                  </script>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
