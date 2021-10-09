@@ -2,3 +2,4 @@ gunicorn
 django
 django-heroku
 isodate
+requests
