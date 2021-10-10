@@ -69,13 +69,14 @@
                   <input type="button" name="myButton" value="Download" class="btn btn-sm btn-outline-secondary">
                   <a id='demo' title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
                 </form>
-                <script async src="{% static 'search/script.js' %}"></script>
+                
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
             </div>
           </div>
         </div>
+        <script async src="{% static 'search/script.js' %}"></script>
         {% endfor %}
       </div>
     </div>
