@@ -11,7 +11,6 @@ window.onload = function() {
 
 function HelloWorld() {
 
-    document.getElementById("demo").innerHTML = "You CLicked Me";
     console.log("Downloading..........");
 };
     
