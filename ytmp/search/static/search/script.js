@@ -1,7 +1,6 @@
 
 function load(){
 
-    for(var counter =0; counter > 10; counter++){
 
         document.getElementById('demo').onclick = function() {videoURL()};
         function videoURL() {
@@ -12,7 +11,6 @@ function load(){
         
 
         };
-    };
 };
 window.onload = load;
 
