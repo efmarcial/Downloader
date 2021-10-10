@@ -6,14 +6,14 @@
         console.log("Clicked");
     };
 
-    var mybutton = document.form1.myButton;
-    var numberClicked = 0;
+   
+    var myForm = document.form1;
 
-    function myButtonClicked() {
-        console.log("Clicked button")
+    function btnCheckFormClick(e) {
+        console.log("Clicked Button");
     };
 
-    mybutton.addEventListener("'click", myButtonClicked);
+    myForm.myButton.addEventListener("click", btnCheckFormClick);
 
 
 
