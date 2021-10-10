@@ -1,15 +1,17 @@
 
 function load(){
 
-    document.getElementById('divBtn').onclick = function() {videoURL()};
-    function videoURL() {
-        var id = document.getElementById("demo");
-        var videourl = document.getElementById('demo').getAttribute('title');
+    for(var counter =0; counter > 10; counter++){
 
-        console.log("Downloading..........");
-        console.log(videourl);
+        document.getElementById('divBtn').onclick = function() {videoURL()};
+        function videoURL() {
+            var videourl = document.getElementById('demo').getAttribute('title');
 
+            console.log("Downloading..........");
+            console.log(videourl);
+        
 
+        };
     };
 };
 window.onload = load;
