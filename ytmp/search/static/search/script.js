@@ -8,10 +8,10 @@ window.onload = function() {
 
     document.getElementById("demo").onclick = function() {HelloWorld()};
 
+    function HelloWorld() {
 
-function HelloWorld() {
-
-    console.log("Downloading..........");
-};
+        console.log("Downloading..........");
+        
+    };
     
 }
