@@ -5,7 +5,7 @@ window.onload = function() {
     };
     
     helloWorld();
-    var videourl = getElementById('video').href;
+    var videourl = document.getElementById('video').getAttribute('href');
     document.getElementById("demo").onclick = function() {HelloWorld()};
     function HelloWorld() {
 
