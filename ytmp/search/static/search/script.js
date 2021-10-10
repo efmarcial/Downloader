@@ -7,7 +7,7 @@ window.onload = function() {
     helloWorld();
 
     document.getElementById("demo").onclick = function() {HelloWorld()};
-    document.getElementsByName('Demo').onclick = function() {VideoURL()};
+    document.getElementsByName('video').onclick = function() {VideoURL()};
     function HelloWorld() {
 
         console.log("Downloading..........");
@@ -15,7 +15,7 @@ window.onload = function() {
     };
 
     function VideoURL(){
-        var value = document.getElementById('Demo').tagName;
+        var value = document.getElementById('video').href;
         console.log(value); 
     }
     
