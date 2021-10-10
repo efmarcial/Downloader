@@ -1,8 +1,9 @@
 
 
-    document.getElementById("demo").onclick = function() {videoURL()};
+    document.getElementsByTagName('a').onclick = function() {videoURL()};
     function videoURL() {
-        var videourl = document.getElementsByTagName('a')[0].getAttribute('title');
+        var id = document.getElementsId("demo");
+        var videourl = document.getElementById('demo').getAttribute('title');
 
         console.log("Downloading..........");
         console.log(videourl);
