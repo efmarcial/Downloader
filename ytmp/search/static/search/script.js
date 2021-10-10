@@ -7,16 +7,12 @@ window.onload = function() {
     helloWorld();
 
     document.getElementById("demo").onclick = function() {HelloWorld()};
-    document.getElementsByName('video').onclick = function() {VideoURL()};
     function HelloWorld() {
 
         console.log("Downloading..........");
-        
+        var videourl = getElementById('video').href;
+        console.log(videourl);
     };
 
-    function VideoURL(){
-        var value = document.getElementById('video').href;
-        console.log(value); 
-    }
     
 }
