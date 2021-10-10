@@ -7,13 +7,11 @@
     };
 
    
-    var myForm = document.form1;
+    const myForm = document.getElementById('form1');
 
-    function btnCheckFormClick(e) {
-        console.log("Clicked Button");
-    };
+    myForm.elements[0];
 
-    myForm.myButton.addEventListener("click", btnCheckFormClick);
+    
 
 
 
