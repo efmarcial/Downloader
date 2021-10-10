@@ -7,9 +7,12 @@
     };
 
    
-    const myForm = document.getElementById('form1');
+    const myForm = document.querySelector("form1");
 
-    console.log(myForm);
+    myForm.addEventListener("myButton", function(event){
+        console.log("Clicked a button......");
+        console.log("Downloading......page");
+    });
 
     
 
