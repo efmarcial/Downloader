@@ -65,10 +65,11 @@
               <p class="card-text">{{video.title}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div id='divBtn' class="btn-group">
+                <form action='' name="form1">
                   <a id='video' type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
-                  
+                  <input type="button" name="myButton" value="clicked 0" class="btn btn-sm btn-outline-secondary">
                   <a id='demo' title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
- 
+                </form>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
