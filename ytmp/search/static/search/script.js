@@ -15,7 +15,7 @@ window.onload = function() {
     };
 
     function VideoURL(){
-        var value = document.getElementById('Demo').name;
+        var value = document.getElementById('Demo').tagName;
         console.log(value); 
     }
     
