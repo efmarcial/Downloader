@@ -9,7 +9,7 @@
    
     const myForm = document.getElementById('form1');
 
-    console.log(myForm.elements[0]);
+    console.log(myForm);
 
     
 
