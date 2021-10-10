@@ -5,12 +5,12 @@ window.onload = function() {
     };
     
     helloWorld();
-
+    var videourl = getElementById('video').href;
     document.getElementById("demo").onclick = function() {HelloWorld()};
     function HelloWorld() {
 
         console.log("Downloading..........");
-        var videourl = getElementById('video').href;
+        
         console.log(videourl);
     };
 
