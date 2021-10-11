@@ -10,9 +10,7 @@
 
           nodelist[i].onclick = function(){VideoURL()};
           function VideoURL(){
-              var url = nodelist[i].getAttribute("title");
               console.log("clicked");
-              console.log(url);
           };
           document.getElementById("myAnchor").getAttribute("target");
 
