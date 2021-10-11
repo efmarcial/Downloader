@@ -3,7 +3,7 @@
   
         var div = document.getElementById("myDIV");
         var nodelist = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
-    
+        nodelist = url;
         var i;
         for(i=0; i < nodelist.length; i++) {
           console.log(nodelist[i]);
@@ -11,11 +11,11 @@
           nodelist[i].onclick = function(){VideoURL()};
           function VideoURL(){
 
-            var url = document.getElementById("demo").getAttribute("title");
+            var vdurl = url.getAttribute("title");
 
 
               console.log("clicked");
-              console.log(url);
+              console.log(vdurl);
 
           };
 
