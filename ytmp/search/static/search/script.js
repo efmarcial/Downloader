@@ -13,7 +13,7 @@
 
           var tagId = document.getElementById("demo");
           nodelist[i].onclick = function(){VideoURL()};
-          urls.push(nodelist[i]);
+          urls.push(nodelist[i]['id']);
 
           function VideoURL(){
 
