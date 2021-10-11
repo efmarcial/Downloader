@@ -2,6 +2,7 @@
 
   
         var div = document.getElementById("myDIV");
+        var url = document.getElementById('demo');
         var nodelist = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
       
         var i;
@@ -11,7 +12,7 @@
           nodelist[i].onclick = function(){VideoURL()};
           function VideoURL(){
 
-            var vdurl = div.getAttribute("title");
+            var vdurl = url.getAttribute("title");
 
 
               console.log("clicked");
