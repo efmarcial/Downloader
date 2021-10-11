@@ -24,7 +24,7 @@
         };
 
         for(i=0; i < length; i++){
-            console.log(urls[i]);
+            console.log(urls[i][i]);
         }
         
     
