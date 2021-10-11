@@ -1,6 +1,4 @@
 
-
-  
         const div = document.getElementById("myDIV");
         var nodelist = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
         
@@ -23,9 +21,7 @@
           
         };
 
-        for(i=0; i < length; i++){
-            console.log(urls[i][i]);
-        }
+        console.log(urls)
         
     
 
