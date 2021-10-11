@@ -15,7 +15,7 @@
 
 
               console.log("clicked");
-            console.log(nodelist[i]);
+            console.log(nodelist.getAttribute('title'));
           };
 
         };
