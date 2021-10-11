@@ -8,7 +8,7 @@
         var i;
         for(i=0; i < nodelist.length; i++) {
           console.log(nodelist[i]);
-            var url = nodelist.getAttribute('title');
+            var url = nodelist[i].getAttribute('title');
 
           nodelist[i].onclick = function(){VideoURL()};
           function VideoURL(){
