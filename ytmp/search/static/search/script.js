@@ -11,7 +11,9 @@
 
           var tagId = document.getElementById("demo");
           nodelist[i].onclick = function(){VideoURL()};
-          urls.push(nodelist[i][{'id':"video"}]);
+          urls.push(nodelist[i][
+            'title'
+          ]);
 
           function VideoURL(){
 
