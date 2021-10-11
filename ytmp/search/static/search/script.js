@@ -23,7 +23,9 @@
           
         };
 
-        console.log(urls);
+        for(i=0; i < length; i++){
+            console.log(urls[i]);
+        }
         
     
 
