@@ -15,8 +15,8 @@
           urls.push(nodelist[i][
               'title'
           ]);
-
-          tagId = tagId.setAttribute('id', "demo"+i);
+          var demo = 'demo'+i.toString();
+          nodelist[i].setAttribute('id', demo);
 
           
           
