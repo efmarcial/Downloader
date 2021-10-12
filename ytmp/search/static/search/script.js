@@ -14,6 +14,7 @@
           nodelist[i].onclick = function(){VideoURL()};
           var tagId = document.getElementById('demo');
           function VideoURL(){
+
             console.log("clicked");
           console.log(tagId);
         };
@@ -27,11 +28,9 @@
           
           var x = i + 1
           var demoNum = 'demo'+x.toString();
-          nodelist.setAttribute('id', demoNum);
+          nodelist[i].setAttribute('id', demoNum);
      
-          
-          
-          
+             
         };
         // Remove the empty " " index from the urls array
         urls = urls.filter(item => item);
