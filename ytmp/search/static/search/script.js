@@ -32,6 +32,7 @@
               console.log("clicked");
             console.log(tagId);
           };
+          tagId = tagId;
           
         };
         // Remove the empty " " index from the urls array
