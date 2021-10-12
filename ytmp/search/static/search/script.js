@@ -3,6 +3,7 @@
         var nodelist = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
         
         var urls = [];
+        var ids = [];
         // loop the lenght of all the classes "btn...." to get all <a>.
         var i;
         for(i=0; i < nodelist.length; i++) {
@@ -12,9 +13,11 @@
           var tagId = document.getElementById("demo");
           nodelist[i].onclick = function(){VideoURL()};
           urls.push(nodelist[i][
-              'id',
               'title'
           ]);
+          
+          // append all id values in ids list
+          ids.push(nodelist[i]['id']);
 
           function VideoURL(){
 
@@ -25,7 +28,10 @@
         };
         // Remove the empty " " index from the urls array
         urls = urls.filter(item => item);
-        console.log(urls)
+
+        //log the arrays in the console
+        console.log(urls);
+        console.log(ids);
         
     
 
