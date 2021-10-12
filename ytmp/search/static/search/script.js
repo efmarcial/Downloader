@@ -14,7 +14,7 @@
           nodelist[i].onclick = function(){VideoURL()};
           var tagId = document.getElementById('demo');
           function VideoURL(){
-            
+            var tagId = document.getElementById('demo');
             console.log("clicked");
           console.log(tagId);
         };
