@@ -16,7 +16,7 @@
               'title'
           ]);
 
-          tagId.setAttribute('id', "demo"+i);
+          tagId = tagId.setAttribute('id', "demo"+i);
 
           
           
