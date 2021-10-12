@@ -18,9 +18,17 @@
           var x = i + 1
           var demo = 'demo'+x.toString();
           tagId.setAttribute('id', demo);
+
+          
           
           // append all id values in ids list
           ids.push(nodelist[i]['id']);
+
+          function VideoURL(){
+
+              console.log("clicked");
+            console.log(tagId);
+          };
           
         };
         // Remove the empty " " index from the urls array
