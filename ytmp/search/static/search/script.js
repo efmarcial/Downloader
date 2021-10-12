@@ -18,9 +18,6 @@
           var x = i + 1
           var demo = 'demo'+x.toString();
           tagId.setAttribute('id', demo);
-          tagId = document.getElementById(demo);
-
-          
           
           // append all id values in ids list
           ids.push(nodelist[i]['id']);
