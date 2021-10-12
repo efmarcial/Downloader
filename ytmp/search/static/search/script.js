@@ -18,7 +18,7 @@
           ]);
           var x = i + 1
           var demo = 'demo'+x.toString();
-          nodelist[i].setAttribute('id', demo);
+          tagId.setAttribute('id', demo);
 
           
           
