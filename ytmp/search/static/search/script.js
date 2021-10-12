@@ -11,9 +11,9 @@
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
           
-          nodelist.onclick = function(){VideoURL()};
+          nodelist[i].onclick = function(){VideoURL()};
+          var tagId = document.getElementById('demo');
           function VideoURL(){
-
             console.log("clicked");
           console.log(tagId);
         };
@@ -24,10 +24,10 @@
           // append all id values in ids list
           ids.push(nodelist[i]['id']);
 
-          var tagId = document.getElementById('demo');
+          
           var x = i + 1
           var demoNum = 'demo'+x.toString();
-          nodelist[i].setAttribute('id', demoNum);
+          nodelist.setAttribute('id', demoNum);
      
           
           
