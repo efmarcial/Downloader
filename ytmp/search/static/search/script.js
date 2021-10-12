@@ -11,7 +11,13 @@
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
           
-          nodelist[i].onclick = function(){VideoURL()};
+          nodelist.onclick = function(){VideoURL()};
+          function VideoURL(){
+
+            console.log("clicked");
+          console.log(tagId);
+        };
+
           urls.push(nodelist[i][
               'title'
           ]);
@@ -21,14 +27,10 @@
           var tagId = document.getElementById('demo');
           var x = i + 1
           var demoNum = 'demo'+x.toString();
-          nodelist[i].setAttribute('id', ids[i]);
+          nodelist[i].setAttribute('id', demoNum);
      
           
-          function VideoURL(){
-
-              console.log("clicked");
-            console.log(tagId);
-          };
+          
           
         };
         // Remove the empty " " index from the urls array
