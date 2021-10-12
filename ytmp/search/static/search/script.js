@@ -19,8 +19,10 @@
         console.log(nodelist[i]);
           var x = i + 1
           var demoNum = 'demo'+x.toString();
-          nodelist[i].setAttribute('id', demoNum);
 
+          if(nodelist[i] != 'video'){
+            nodelist[i].setAttribute('id', demoNum);
+          };
           urls.push(nodelist[i][
             'title'
         ]);
