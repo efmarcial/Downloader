@@ -6,16 +6,18 @@
         var ids = [];
         // loop the lenght of all the classes "btn...." to get all <a>.
         var i;
+        var demo = 'demo';
         for(i=0; i < nodelist.length; i++) {
 
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
-          var tagId = document.getElementById("demo");
+          var tagId = document.getElementById('demo');
           nodelist[i].onclick = function(){VideoURL()};
           urls.push(nodelist[i][
               'title'
           ]);
-          var demo = 'demo'+i.toString();
+          var x = i + 1
+          var demo = 'demo'+x.toString();
           nodelist[i].setAttribute('id', demo);
 
           
