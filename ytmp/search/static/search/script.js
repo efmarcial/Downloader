@@ -12,7 +12,7 @@
         var x = i + 1
         var demoNum = 'demo'+x.toString();
 
-        if(nodelist[i] !=='video'){
+        if(nodelist !=='video'){
           nodelist[i].setAttribute('id', demoNum);
         }; 
          // console.log(nodelist[i]);
