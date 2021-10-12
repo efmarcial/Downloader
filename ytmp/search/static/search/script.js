@@ -15,6 +15,10 @@
           urls.push(nodelist[i][
               'title'
           ]);
+
+          tagId.setAttribute(id, "demo"+nodelist[i]);
+
+          
           
           // append all id values in ids list
           ids.push(nodelist[i]['id']);
