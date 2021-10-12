@@ -24,8 +24,6 @@
           
           // append all id values in ids list
           ids.push(nodelist[i]['id']);
-
-          };
           
         };
         // Remove the empty " " index from the urls array
