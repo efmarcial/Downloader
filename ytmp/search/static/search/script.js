@@ -11,7 +11,7 @@
 
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
-          var tagId = document.getElementById('demo');
+          var tagId = document.getElementById(demo);
           nodelist[i].onclick = function(){VideoURL()};
           urls.push(nodelist[i][
               'title'
