@@ -22,7 +22,7 @@
           };
           
         };
-
+        urls = urls.filter(item => item);
         console.log(urls)
         
     
