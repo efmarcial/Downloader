@@ -15,15 +15,15 @@
           urls.push(nodelist[i][
               'title'
           ]);
+          // append all id values in ids list
+          ids.push(nodelist[i]['id']);
 
           var tagId = document.getElementById('demo');
           var x = i + 1
           var demoNum = 'demo'+x.toString();
-          nodelist[i].setAttribute('id', demoNum);
+          nodelist[i].setAttribute('id', ids[i]);
      
-          // append all id values in ids list
-          ids.push(nodelist[i]['id']);
-
+          
           function VideoURL(){
 
               console.log("clicked");
