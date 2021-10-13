@@ -2,11 +2,10 @@
         const div = document.getElementById("myDIV");
         var nodelist = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
         
-        var urls = [];
-        var ids = [];
+        var urls,ids = [];
         var demoNum = 'demo';
         var ademo = document.getElementById(demoNum);
-        var atag = document.getElementById('video');
+        const atag = document.getElementById('video');
 
 
         // loop the lenght of all the classes "btn...." to get all <a>.
@@ -16,7 +15,7 @@
         console.log(nodelist[i]);
         var x = i + 1;
         
-        if(ademo !==atag){
+        if(nodelist[i] !==atag){
             demoNum = demoNum+x.toString();
             ademo = ademo.setAttribute('id', demoNum);
             
