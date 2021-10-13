@@ -66,12 +66,13 @@
                 <div id='divBtn' class="btn-group">
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   
-                  <a id='demo'  title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
+                  <button id='demo' onclick="getTitle();" title="{{video.url}}" class="btn btn-sm btn-outline-secondary">Download</button>
                   <script>
 
-                    document.getElementById('demo').onclick = function HelloWorld(){
-                    var title =  document.getElementById('demo').getAttribute('title');
-                        console.log(title);
+                    const id = document.getElementById('demo');
+                    function getTitle(){
+                      const title = id.getAttribute('title');
+                      console.log(title);
                     };
 
                   </script>
