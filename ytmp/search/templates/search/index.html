@@ -83,11 +83,11 @@
   <script>
 
     const id = document.getElementById('demo');
-    nodeList = id.getElementsByClassName("btn btn-sm btn-outline-secondary");
+    nodeList = document.getElementsByClassName("btn btn-sm btn-outline-secondary");
 
     var i;
     function getTitle(){
-      var title = id.getAttribute('title');
+      var title = nodeList.getAttribute('title');
       console.log(title);
     };
 
