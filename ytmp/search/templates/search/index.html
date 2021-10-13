@@ -67,15 +67,7 @@
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   
                   <button id='demo' onclick="getTitle();" title="{{video.url}}" class="btn btn-sm btn-outline-secondary">Download</button>
-                  <script>
-
-                    const id = document.getElementById('demo');
-                    function getTitle(){
-                      const title = id.getAttribute('title');
-                      console.log(title);
-                    };
-
-                  </script>
+                  
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
@@ -88,6 +80,15 @@
     </div>
     
   </div>
+  <script>
+
+    const id = document.getElementById('demo');
+    function getTitle(){
+      const title = id.getAttribute('title');
+      console.log(title);
+    };
+
+  </script>
   <!-- <script async src="{% static 'search/script.js' %}"></script> -->
 </main>
 </body>
