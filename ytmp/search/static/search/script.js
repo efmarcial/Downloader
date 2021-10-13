@@ -9,7 +9,7 @@
         
         // loop the lenght of all the classes "btn...." to get all <a>.
         
-        for(var i=0; i < nodelist.length; i++) {
+        for(var i=0; i < div.length; i++) {
            
         console.log(nodelist[i]);
         
@@ -20,7 +20,6 @@
           nodelist[i].onclick = function(){VideoURL()};
           function VideoURL(){
             console.log("clicked");
-          console.log(ademo);
         };
           urls.push(nodelist[i][
             'title'
@@ -30,7 +29,7 @@
              
         };
         // Remove the empty " " index from the urls array
-        ids = ids.filter(item => item);
+        //ids = ids.filter(item => item);
 
         //log the arrays in the console
         console.log(urls);
