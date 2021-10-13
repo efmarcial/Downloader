@@ -6,17 +6,11 @@
         var ids = [];
 
         
-        let counter = 0;
-        var x = 1;
-        var demoNum = 'demo';
-        do{
-            ademo = document.getElementById(demoNum);
-            demoNum = 'demo'+x.toString();
-            ademo.setAttribute('id', demoNum);
-            counter = counter + 1;
-            x+=1;
-        } while(counter <9);
-
+        var a = document.getElementsByTagName('a');
+        for(i=0; i<a.length;i++){
+            var b=a[i];
+            var c = b.getAttribute('id');
+        };
         // loop the lenght of all the classes "btn...." to get all <a>.
         
         for(var i=0; i < nodelist.length; i++) {

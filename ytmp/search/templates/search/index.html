@@ -67,7 +67,15 @@
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   
                   <a id='demo' title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
-             
+                  <script>
+                    function muyFunction(){
+                      import { hello }from './HelloWorld.js';
+                      let val = hello();
+                      console.log("This is from the inner html");
+                    }
+
+
+                  </script>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
@@ -80,7 +88,7 @@
     </div>
     
   </div>
-  <script async src="{% static 'search/script.js' %}"></script>
+  <!-- <script async src="{% static 'search/script.js' %}"></script> -->
 </main>
 </body>
 </html>
