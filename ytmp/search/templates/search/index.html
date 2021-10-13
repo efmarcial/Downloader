@@ -66,9 +66,9 @@
                 <div id='divBtn' class="btn-group">
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   
-                  <a id='demo' title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
+                  <a id='demo' href="javascript:myFunction()" title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
                   <script type="module" src="{% static 'search/HelloWorld.js' %}">
-                    function muyFunction(){
+                    function myFunction(){
                       import  hello  from './HelloWorld.js';
                       let val = hello();
                       console.log("This is from the inner html");
