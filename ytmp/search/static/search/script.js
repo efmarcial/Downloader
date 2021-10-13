@@ -5,6 +5,7 @@
         var urls = [];
         var ids = [];
         var demoNum = 'demo';
+        var ademo = document.getElementById('id');
         // loop the lenght of all the classes "btn...." to get all <a>.
         
         for(var i=0; i < nodelist.length; i++) {
@@ -14,8 +15,7 @@
         var atag = document.getElementById('video');
         if(nodelist !==atag){
             
-            
-            document.getElementById(demoNum);
+            ademo.setAttribute(demoNum);
             demoNum = 'demo'+x.toString();
         }; 
          // console.log(nodelist[i]);
