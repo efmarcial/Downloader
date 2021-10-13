@@ -18,7 +18,8 @@
         
         if(ademo !==atag){
             demoNum = demoNum+x.toString();
-            ademo = ademo.setAttribute('id', demoNum);
+            ademo.setAttribute('id', demoNum);
+            ademo = document.getElementById(demoNum);
             
         }; 
          // console.log(nodelist[i]);
