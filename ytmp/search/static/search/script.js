@@ -38,7 +38,7 @@
              
         };
         // Remove the empty " " index from the urls array
-        urls = urls.filter(item => item);
+        //urls = urls.filter(item => item);
 
         //log the arrays in the console
         console.log(urls);
