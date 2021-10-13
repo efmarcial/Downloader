@@ -10,10 +10,11 @@
            
         console.log(nodelist[i]);
         var x = i + 1
-        var demoNum = 'demo'+x.toString();
 
         if(nodelist !=='video'){
-          nodelist[i][{'id':'demo'}].setAttribute('id', demoNum);
+            
+            var demoNum = 'demo'+x.toString();
+            nodelist[i].setAttribute('id', demoNum);
         }; 
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
