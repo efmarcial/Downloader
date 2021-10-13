@@ -29,6 +29,7 @@
           nodelist[i].onclick = function(){Clicked()};
           function Clicked(){
             console.log("clicked");
+            setAttr();
         };
 
 
