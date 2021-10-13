@@ -4,6 +4,7 @@
         
         var urls = [];
         var ids = [];
+        var demoNum = 'demo';
         // loop the lenght of all the classes "btn...." to get all <a>.
         
         for(var i=0; i < nodelist.length; i++) {
@@ -13,8 +14,9 @@
         var atag = document.getElementById('video');
         if(nodelist !==atag){
             
-            var demoNum = 'demo'+x.toString();
-            nodelist[i].setAttribute('id', demoNum);
+            
+            document.getElementById(demoNum);
+            demoNum = 'demo'+x.toString();
         }; 
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
