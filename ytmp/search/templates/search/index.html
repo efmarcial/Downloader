@@ -66,8 +66,14 @@
                 <div id='divBtn' class="btn-group">
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   
-                  <a id='demo' href='./search/HelloWorld.js' title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
-                  
+                  <a id='demo' onclick='return check()' title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
+                  <script>
+
+                    function check(){
+                      return console.log("Hello World from inner html");
+                    };
+
+                  </script>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
