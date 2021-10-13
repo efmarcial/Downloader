@@ -3,7 +3,7 @@
         var nodelist = div.getElementsByTagName('button');
         var urls = [];
         var ids = [];
-
+        var demoNum = 'demo';
         
         
         // loop the lenght of all the classes "btn...." to get all <a>.
@@ -14,15 +14,27 @@
         
         
           console.log(nodelist[i]);
+
+
+
+        function setAttr(){
+            demoNum = demoNum+i.toString();
+            var list = nodelist[i]['id'].setAttribute('id',demoNum );
+            return list;
+
+        };
+
             // onClick Download btn to get url and pass it to js
           
-          nodelist[i].onclick = function(){VideoURL()};
-          function VideoURL(){
+          nodelist[i].onclick = function(){Clicked()};
+          function Clicked(){
             console.log("clicked");
         };
-          urls.push(nodelist[i][
-            'title'
-        ]);
+
+
+
+
+          urls.push(nodelist[i]['title']);
         // append all id values in ids list
         ids.push(nodelist[i]['id']);
              
