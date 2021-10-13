@@ -19,7 +19,7 @@
 
         function setAttr(){
             demoNum = demoNum+i.toString();
-            var list = nodelist[i]['id'].setAttribute('id',demoNum );
+            var list = nodelist[i].setAttribute('id',demoNum );
             return list;
 
         };
