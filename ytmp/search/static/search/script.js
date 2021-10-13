@@ -9,7 +9,7 @@
         
         // loop the lenght of all the classes "btn...." to get all <a>.
         
-        for(var i=0; i < div.length; i++) {
+        for(var i=0; i < nodelist.length; i++) {
            
         console.log(nodelist[i]);
         
