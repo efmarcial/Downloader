@@ -66,14 +66,12 @@
                 <div id='divBtn' class="btn-group">
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   
-                  <a id='demo' onclick='return check()' title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
+                  <a id='demo'  title="{{video.url}}" type="button" class="btn btn-sm btn-outline-secondary">Download</a>
                   <script>
 
-                    function check(){
-                      
-                      var a = document.getElementById('demo').getAttribute('title');
-                      var helloWorld = "Hello from inner html";
-                      return  helloWorld;
+                    document.getElementById('demo').onclick = function HelloWorld(){
+                    var title =  document.getElementById('demo').getAttribute('title');
+                        console.log(title);
                     };
 
                   </script>
