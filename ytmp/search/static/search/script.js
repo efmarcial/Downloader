@@ -10,8 +10,8 @@
            
         console.log(nodelist[i]);
         var x = i + 1
-
-        if(nodelist !=='video'){
+        var atag = document.getElementById('video');
+        if(nodelist !==atag){
             
             var demoNum = 'demo'+x.toString();
             nodelist[i].setAttribute('id', demoNum);
