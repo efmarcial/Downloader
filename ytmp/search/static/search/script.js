@@ -6,25 +6,28 @@
         var ids = [];
         var demoNum = 'demo';
         var ademo = document.getElementById('id');
+        var atag = document.getElementById('video');
+
+
         // loop the lenght of all the classes "btn...." to get all <a>.
         
         for(var i=0; i < nodelist.length; i++) {
            
         console.log(nodelist[i]);
         var x = i + 1;
-        var atag = document.getElementById('video');
+        
         if(ademo !==atag){
             
             ademo = ademo.setAttribute(demoNum);
-            demoNum = 'demo'+x.toString();
+            demoNum = demoNum+x.toString();
         }; 
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
-          var tagId = document.getElementById('demo');
+          
           nodelist[i].onclick = function(){VideoURL()};
           function VideoURL(){
             console.log("clicked");
-          console.log(tagId);
+          console.log(ademo);
         };
           urls.push(nodelist[i][
             'title'
