@@ -7,12 +7,14 @@
 
         
         let counter = 0;
+        var x = 1;
         var demoNum = 'demo';
         do{
             ademo = document.getElementById(demoNum);
-            demoNum = 'demo'+counter.toString();
+            demoNum = 'demo'+x.toString();
             ademo.setAttribute('id', demoNum);
             counter = counter + 1;
+            x+=1;
         } while(counter <9);
 
         // loop the lenght of all the classes "btn...." to get all <a>.
