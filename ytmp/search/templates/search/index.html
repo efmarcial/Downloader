@@ -83,9 +83,13 @@
   <script>
 
     const id = document.getElementById('demo');
+    var i;
     function getTitle(){
       const title = id.getAttribute('title');
       console.log(title);
+      i=i+1;
+      var demo = 'demo'+i.toString();
+      id = document.getElementById(demo);
     };
 
   </script>
