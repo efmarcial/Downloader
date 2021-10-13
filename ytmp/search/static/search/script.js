@@ -4,8 +4,8 @@
         
         var urls = [];
         var ids = [];
-        var demoNum = 'demo';
-        var ademo = document.getElementById(demoNum);
+
+        var ademo = document.getElementById('demo');
 
         // loop the lenght of all the classes "btn...." to get all <a>.
         
