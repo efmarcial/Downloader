@@ -53,7 +53,7 @@
   </section>
 
   <div class="album py-5 bg-light">
-    <div id="myDIV" class="container">
+    <div class="container">
       <div class="row">
 
         {%for video in videos%}
@@ -65,9 +65,9 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div id='divBtn' class="btn-group">
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
-                  
-                  <button id='demo' onclick="getTitle();" title="{{video.url}}" class="btn btn-sm btn-outline-secondary">Download</button>
-                  
+                  <div id="myDIV">
+                  <button id='demo'  title="{{video.url}}" class="btn btn-sm btn-outline-secondary">Download</button>
+                  </div>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
@@ -80,20 +80,7 @@
     </div>
     
   </div>
-  <script>
-
-    const id = document.getElementById('demo');
-
-    var i;
-    function getTitle(){
-      
-    nodeList = document.getElementsByTagName('button');
-      var title = nodeList.getAttribute('title');
-      console.log(title);
-    };
-
-  </script>
-  <!-- <script async src="{% static 'search/script.js' %}"></script> -->
+  <script async src="{% static 'search/script.js' %}"></script> 
 </main>
 </body>
 </html>
