@@ -13,7 +13,7 @@
         console.log(nodelist[i]);
         var x = i + 1
         var atag = document.getElementById('video');
-        if(nodelist !==atag){
+        if(ademo !==atag){
             
             ademo.setAttribute(demoNum);
             demoNum = 'demo'+x.toString();
