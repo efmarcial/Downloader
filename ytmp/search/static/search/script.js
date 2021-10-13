@@ -2,7 +2,8 @@
         const div = document.getElementById("myDIV");
         var nodelist = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
         
-        var urls,ids = [];
+        var urls = [];
+        var ids = []
         var demoNum = 'demo';
         var ademo = document.getElementById(demoNum);
         const atag = document.getElementById('video');
@@ -33,8 +34,6 @@
         ]);
         // append all id values in ids list
         ids.push(nodelist[i]['id']);
-
-     
              
         };
         // Remove the empty " " index from the urls array
