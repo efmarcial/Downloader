@@ -11,11 +11,11 @@
         for(var i=0; i < nodelist.length; i++) {
            
         console.log(nodelist[i]);
-        var x = i + 1
+        var x = i + 1;
         var atag = document.getElementById('video');
         if(ademo !==atag){
             
-            ademo.setAttribute(demoNum);
+            ademo = ademo.setAttribute(demoNum);
             demoNum = 'demo'+x.toString();
         }; 
          // console.log(nodelist[i]);
