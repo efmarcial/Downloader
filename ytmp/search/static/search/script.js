@@ -3,7 +3,7 @@
         var nodelist = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
         
         var urls = [];
-        var ids = []
+        var ids = [];
         var demoNum = 'demo';
         var ademo = document.getElementById(demoNum);
         const atag = document.getElementById('video');
