@@ -5,9 +5,10 @@
         var urls = [];
         var ids = [];
 
-        var ademo = document.getElementById('demo');
+        
         let counter = 0;
-        var demoNum = 'demo1';
+        var demoNum = 'demo';
+        var ademo = document.getElementById(demoNum);
         do{
             
             demoNum = 'demo'+counter.toString();
