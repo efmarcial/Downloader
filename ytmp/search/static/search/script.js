@@ -15,7 +15,7 @@
         console.log(nodelist[i]);
         var x = i + 1;
         
-        if(nodelist[i] !==atag){
+        if(nodelist !==atag){
             demoNum = demoNum+x.toString();
             ademo = ademo.setAttribute('id', demoNum);
             
