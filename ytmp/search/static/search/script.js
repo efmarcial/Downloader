@@ -6,11 +6,7 @@
         var ids = [];
 
         
-        var a = document.getElementsByTagName('button');
-        for(i=0; i<a.length;i++){
-            var b=a[i];
-            var c = b.getAttribute('id');
-        };
+        
         // loop the lenght of all the classes "btn...." to get all <a>.
         
         for(var i=0; i < nodelist.length; i++) {
