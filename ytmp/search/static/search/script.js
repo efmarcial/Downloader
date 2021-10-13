@@ -5,7 +5,7 @@
         var urls = [];
         var ids = [];
         var demoNum = 'demo';
-        var ademo = document.getElementById('id');
+        var ademo = document.getElementById(demoNum);
         var atag = document.getElementById('video');
 
 
