@@ -17,9 +17,9 @@
         var x = i + 1;
         
         if(ademo !==atag){
-            
-            ademo = ademo.setAttribute('id', demoNum);
             demoNum = demoNum+x.toString();
+            ademo = ademo.setAttribute('id', demoNum);
+            
         }; 
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
