@@ -7,10 +7,11 @@
 
         var ademo = document.getElementById('demo');
         let counter = 0;
-        var demoNum = 'demo';
+        var demoNum = 'demo1';
         do{
-            demoNum = 'demo'+counter.toString();
+            
             ademo.setAttribute('id', demoNum);
+            demoNum = 'demo'+counter.toString();
             counter = counter + 1;
         } while(counter <9);
 
