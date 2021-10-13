@@ -7,14 +7,18 @@
 
         var ademo = document.getElementById('demo');
 
+        for(var x=0; x < 9; x++){
+            demoNum = 'demo'+x.toString();
+            ademo.setAttribute('id', demoNum);
+        };
+
         // loop the lenght of all the classes "btn...." to get all <a>.
         
         for(var i=0; i < nodelist.length; i++) {
            
         console.log(nodelist[i]);
-        var x = i + 1;
-        demoNum = 'demo'+x.toString();
-        ademo.setAttribute('id', demoNum);
+        
+        
          // console.log(nodelist[i]);
             // onClick Download btn to get url and pass it to js
           
