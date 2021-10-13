@@ -10,8 +10,8 @@
         var demoNum = 'demo';
         do{
             ademo = document.getElementById(demoNum);
-            ademo.setAttribute('id', demoNum);
             demoNum = 'demo'+counter.toString();
+            ademo.setAttribute('id', demoNum);
             counter = counter + 1;
         } while(counter <9);
 
