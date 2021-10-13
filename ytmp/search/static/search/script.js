@@ -1,6 +1,5 @@
         // get all the class "btn..." in the DOM
         const div = document.getElementById("myDIV");
-        var nodeList = div.getElementsByClassName("btn btn-sm btn-outline-secondary");
         var nodelist = div.getElementsByTagName('button');
         var urls = [];
         var ids = [];
@@ -29,7 +28,7 @@
              
         };
         // Remove the empty " " index from the urls array
-        ids = ids.filter(item => item);
+        //ids = ids.filter(item => item);
 
         //log the arrays in the console
         console.log(urls);
