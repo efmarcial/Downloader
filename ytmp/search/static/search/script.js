@@ -6,13 +6,13 @@
         var ids = [];
 
         var ademo = document.getElementById('demo');
-        var counter = 0;
+        let counter = 0;
         var demoNum = 'demo';
-        while(counter!==9){
+        do{
             demoNum = 'demo'+counter.toString();
             ademo.setAttribute('id', demoNum);
             counter = counter + 1;
-        };
+        } while(counter <9);
 
         // loop the lenght of all the classes "btn...." to get all <a>.
         
