@@ -70,7 +70,10 @@
                   <script>
 
                     function check(){
-                      return console.log("Hello World from inner html");
+                      
+                      var a = document.getElementById('demo').getAttribute('title');
+                      var helloWorld = "Hello from inner html";
+                      return a, helloWorld;
                     };
 
                   </script>
