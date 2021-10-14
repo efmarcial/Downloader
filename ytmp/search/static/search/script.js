@@ -18,8 +18,9 @@
 
 
         function setAttr(){
-            demoNum = demoNum+i.toString();
-            var list = nodelist[i].setAttribute('id',demoNum );
+            var x = i + 1;
+            demoNum = demoNum+x.toString()
+            lsit = console.log(demoNum);
             return list;
 
         };
