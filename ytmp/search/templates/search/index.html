@@ -30,10 +30,12 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'search/album.css' %}" rel="stylesheet">
 
-    <script>
-
+    <script type="module" src="{% static 'search/HelloWorld.js' %}">
+      import hello from "search/HelloWorld.js";
       function myFunction(url){
           console.log(url);
+          var external = hello();
+          console.log(external);
       };
   
     </script>
