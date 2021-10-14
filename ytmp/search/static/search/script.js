@@ -20,8 +20,7 @@
         function setAttr(){
             var x = i + 1;
             demoNum = demoNum+x.toString();
-            lsit = console.log(demoNum);
-            return list;
+            list = console.log(demoNum);
 
         };
 
