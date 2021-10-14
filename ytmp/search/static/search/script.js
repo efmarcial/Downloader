@@ -19,7 +19,7 @@
 
         function setAttr(){
             var x = i + 1;
-            demoNum = demoNum+x.toString()
+            demoNum = demoNum+x.toString();
             lsit = console.log(demoNum);
             return list;
 
