@@ -30,15 +30,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'search/album.css' %}" rel="stylesheet">
     <script src="{% static 'search/HelloWorld.js' %}"></script>
-    <script type="module">
-
-      function myFunction(url){
-          console.log(url);
-          var external = hello();
-          console.log(external);
-      };
-  
-    </script>
+    
   </head>
   <body>
 
@@ -90,7 +82,15 @@
     </div>
     
   </div>
-  
+  <script type="module">
+
+    function myFunction(url){
+        console.log(url);
+        var external = hello();
+        console.log(external);
+    };
+
+  </script>
   <!--<script async src="{% static 'search/script.js' %}"></script> -->
 </main>
 </body>
