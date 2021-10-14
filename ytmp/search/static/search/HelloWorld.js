@@ -1,6 +1,7 @@
 
 
 
-function hello(){
-    console.log('This is from the hello() function.');
+function hello(url){
+    var url = url;
+    console.log(url);
 };
