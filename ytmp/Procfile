@@ -1,1 +1,1 @@
-web: bin/runsdir-dyno
+web: bin/runsvdir-dyno
