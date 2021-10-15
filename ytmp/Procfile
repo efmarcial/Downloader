@@ -1,1 +1,3 @@
-web: bin/runsvdir-dyno
+web: gunicorn ytmp.wsgi --log-file - --log-level debug
+web: npm start
+web: bin/runsdir-dyno
