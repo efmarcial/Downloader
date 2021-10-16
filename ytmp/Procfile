@@ -1,2 +1,1 @@
-
-web: bin/runsdir-dyno
+web: gunicorn ytmp.wsgi --log-file - --log-level debug

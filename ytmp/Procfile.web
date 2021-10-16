@@ -1,3 +1,0 @@
-django: gunicorn ytmp.wsgi --log-file - --log-level debug  --bind 127.0.0.1:$DJANGO_PORT
-
-webjs: node bin/node_modules/app.js
