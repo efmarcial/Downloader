@@ -3,7 +3,6 @@
 
 function hello(url,name){
     var url = url;
-    ytdl(url);
     var name = name;
     console.log(name);
     console.log(url);
