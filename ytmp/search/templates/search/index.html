@@ -8,6 +8,9 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870728661073684"
      crossorigin="anonymous"></script>
      <script async src="{% static 'search/HelloWorld.js'  %}"></script>
+     <script>
+       var postURL = "{% url 'DoSomething' %}";
+     </script>
     <!-- Bootstrap core CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -85,8 +88,17 @@
   <script>
 
     function myFunction(url, name){
+      var url = url;
+      var name = name;
       hello(url,name);
+      var data = {name: url};
+      $.post(postURL, data, function(response){
+        if(response === 'success'){alert('Yay');}
+        else{alert('Error! :(');}
+      });
     };
+
+     
 
   </script>
   <!--<script async src="{% static 'search/script.js' %}"></script> -->

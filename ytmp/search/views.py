@@ -1,8 +1,9 @@
+import requests 
 from re import search
 from django.shortcuts import render
 from django.conf import settings
 from isodate import parse_duration
-import requests 
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -59,3 +60,11 @@ def index(request):
 
 
 
+def DoSomething(request):
+    if request.method == 'POST':
+        
+        var = str("Hello World from python")
+
+        return HttpResponse(var) # if everythinf is OK
+    # nothing went well
+    return HttpResponse('Fail..........')
