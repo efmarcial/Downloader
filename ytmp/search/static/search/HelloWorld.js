@@ -8,7 +8,7 @@ function hello(url,name){
     var data = {name : url};
     var dicString = JSON.stringify(data);
     var fs = require('fs');
-    fs.writeFile("./tmp/data.json", dicString);
+    fs.writeFile("data.json", dicString);
 
 
 };
