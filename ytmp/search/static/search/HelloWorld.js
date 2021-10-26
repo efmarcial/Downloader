@@ -2,10 +2,15 @@
 
 
 function hello(url,name){
-    var url = url;
-    var name = name;
     console.log(name);
     console.log(url);
+
+    var data = {name : url};
+    var dicString = JSON.stringify(data);
+    var fs = require('fs');
+    fs.writeFile("./tmp/data.json", dicString);
+
+
 };
 
 
