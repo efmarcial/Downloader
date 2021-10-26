@@ -60,11 +60,3 @@ def index(request):
 
 
 
-def DoSomething(request):
-    if request.method == 'POST':
-        
-        var = str('success')
-
-        return HttpResponse(var) # if everythinf is OK
-    # nothing went well
-    return HttpResponse('Fail..........')
