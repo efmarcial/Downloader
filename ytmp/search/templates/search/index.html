@@ -90,7 +90,7 @@
       var name = name;
       hello(url,name);
       var data = {name: url};
-      $.post(postURL, data, function(response){
+      $.post(data, function(response){
         if(response === 'success'){alert('Yay');}
         else{alert('Error! :(');}
       });
