@@ -6,10 +6,6 @@ function hello(url,name){
     console.log(url);
 
     var data = {name : url};
-    var dicString = JSON.stringify(data);
-    var fs = require('fs');
-    fs.writeFile("data.json", dicString);
-
 
 };
 
