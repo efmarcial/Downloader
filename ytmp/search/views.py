@@ -96,7 +96,12 @@ def download_file(request):
     return response
 
 def SomeFunction(request):
-    foo = request.GET.get('url')
-    bar = request.GET.get('name')
-
-    return response
+    user = request.user 
+    if request.method == "POST" and request.is_ajax():
+        name = request.POST['name']
+        url = request.POST['url']
+        status = 'Good'
+        return HttpResponse(status)
+    else:
+        status = 'Bad'
+        return HttpResponse(status)
