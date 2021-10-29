@@ -95,3 +95,7 @@ def download_file(request):
 
     # Return the response value
     return response
+
+def SomeFunction(request):
+    foo = request.GET.get('url')
+    bar = request.GET.gat('name')
