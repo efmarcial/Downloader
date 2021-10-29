@@ -7,8 +7,6 @@ from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
 
-from ytmp.search import urls
-
 
 # Create your views here.
 
