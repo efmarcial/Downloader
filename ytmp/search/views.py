@@ -7,6 +7,8 @@ from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
 
+from ytmp.search import urls
+
 
 # Create your views here.
 
@@ -101,6 +103,8 @@ def SomeFunction(request):
         name = request.POST['name']
         url = request.POST['url']
         status = 'Good'
+        print(url)
+        print('\n\n', name)
         return HttpResponse(status)
     else:
         status = 'Bad'
