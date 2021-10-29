@@ -97,4 +97,4 @@ def download_file(request):
 
 def SomeFunction(request):
     foo = request.GET.get('url')
-    bar = request.GET.gat('name')
+    bar = request.GET.get('name')
