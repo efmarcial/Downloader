@@ -7,7 +7,9 @@
     <title>Search YouTube</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870728661073684"
      crossorigin="anonymous"></script>
+
      <script async src="{% static 'search/HelloWorld.js'  %}"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Bootstrap core CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -87,7 +89,16 @@
 
     function myFunction(url, name){
       hello(url,name);
-      
+      $.ajax({
+        url: 'ajax/foo',
+        data : {
+          'url': url,
+          'name':name
+        },
+        success: function(data){
+          console.log("everything checks out!!")
+        }
+      });
 
     };
 
