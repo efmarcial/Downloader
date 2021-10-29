@@ -7,7 +7,6 @@ from isodate import parse_duration
 from django.http import HttpResponse
 import mimetypes, os
 
-from .models import Post, Like
 
 # Create your views here.
 
