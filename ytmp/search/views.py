@@ -12,7 +12,7 @@ import mimetypes, os
 
 def index(request):
 
-    post = Post.objects.all()   # Getting all the post from database
+   
     
     videos = []
     if request.method == "POST":
