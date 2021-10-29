@@ -4,7 +4,7 @@ from re import search
 from django.shortcuts import render
 from django.conf import settings
 from isodate import parse_duration
-from django.http import HttpResponse
+from django.http import HttpResponse, response
 import mimetypes, os
 
 
@@ -98,3 +98,5 @@ def download_file(request):
 def SomeFunction(request):
     foo = request.GET.get('url')
     bar = request.GET.get('name')
+
+    return response
