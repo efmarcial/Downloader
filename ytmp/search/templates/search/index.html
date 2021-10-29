@@ -87,16 +87,7 @@
 
     function myFunction(url, name){
       hello(url,name);
-      $.ajax({
-        url: 'ajax/foo',
-        data : {
-          'url': url,
-          'name':name
-        },
-        success: function(data){
-          console.log("everything checks out!!")
-        }
-      });
+      
 
     };
 

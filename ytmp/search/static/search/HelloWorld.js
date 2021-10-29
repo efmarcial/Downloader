@@ -6,6 +6,16 @@ function hello(url,name){
     console.log(url);
 
     var data = {name : url};
+    $.ajax({
+        url: 'ajax/foo',
+        data : {
+          'url': url,
+          'name':name
+        },
+        success: function(data){
+          console.log("everything checks out!!")
+        }
+      });
 
 };
 
