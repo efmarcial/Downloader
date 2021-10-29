@@ -1,12 +1,20 @@
+
+import requests 
 from re import search
 from django.shortcuts import render
 from django.conf import settings
 from isodate import parse_duration
-import requests 
+from django.http import HttpResponse
+import mimetypes, os
+
+from .models import Post, Like
 
 # Create your views here.
 
 def index(request):
+
+    post = Post.objects.all()   # Getting all the post from database
+    
     videos = []
     if request.method == "POST":
         search_url = 'https://www.googleapis.com/youtube/v3/search'
@@ -52,10 +60,38 @@ def index(request):
 
     #pass params to the template
     context = {
-        'videos':videos
+        'videos':videos,
+        'post':'post'
     }
 
     return render(request, 'search/index.html',context)
 
 
 
+def download_file(request):
+
+    # Define Django project base directory
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # Define text file name
+    filename = "audio.mp3"
+
+    # Define the full file path
+    filepath = BASE_DIR+'/ytmp/Files/' + filename
+    
+    # Open the file for reading content
+    path = open(filepath, 'r')
+
+    # Set the mime type 
+
+    mime_type, _ = mimetypes.guess_type(filepath)
+
+    # Set the return value of the HttpRespnse
+
+    response = HttpResponse(path, content=mime_type)
+
+    # Set the HTTP header for sending the browser
+    response['Content-Disposition'] = 'attachment; filename=%s' % filename
+
+    # Return the response value
+    return response
