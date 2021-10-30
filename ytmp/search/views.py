@@ -97,8 +97,8 @@ def download_file(request):
 
 def SomeFunction(request):
     if request.is_ajax == 'GET':
-        name = request.POST['name']
-        url = request.POST['url']
+        name = request.GET['name']
+        url = request.GET['url']
         status = 'Good'
 
         response = dict()
