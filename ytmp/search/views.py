@@ -1,4 +1,5 @@
 
+from json.encoder import JSONEncoder
 import requests 
 from re import search
 from django.shortcuts import render
@@ -96,15 +97,29 @@ def download_file(request):
     return response
 
 def SomeFunction(request):
-    if request.is_ajax or request.method == 'POST':
-        name = request.GET['name']
-        url = request.GET['url']
-        status = 'Good'
-
-        response = dict()
-        response.update({'name': name, 'url':url})
-        return JsonResponse(response, status)
     
-    else:
-        status = 'This is still very Bad'
-        return HttpResponse(status)
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+    if is_ajax:
+        if request.method == 'POST':
+            response = dict()
+
+            response.update({'title': request.POST['title'], 'url' : request.POST['url']})
+            status = "Good"
+            return JsonResponse(response,status )
+        else:
+            status = "This not working yet"
+            return HttpResponse(status)
+
+    #if request.is_ajax  == 'POST':
+        #name = request.GET['name']
+        #url = request.GET['url']
+        #status = 'Good'
+
+        #response = dict()
+        #response.update({'name': name, 'url':url})
+        #return JsonResponse(response, status)
+    
+    #else:
+        #status = 'This is still very Bad'
+        #return HttpResponse(status)
