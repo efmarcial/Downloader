@@ -109,7 +109,8 @@
       $.ajax({
         
         url: 'ajax/foo/',
-        type: 'GET',
+        headers : {"X-Requested-With": "XMLHttpRequest"},
+        type: 'POST',
         data : {
           'title':title,
           'url'  : path
