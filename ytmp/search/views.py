@@ -96,7 +96,7 @@ def download_file(request):
     return response
 
 def SomeFunction(request):
-    if request.is_ajax == 'GET':
+    if request.is_ajax == 'POST':
         name = request.GET['name']
         url = request.GET['url']
         status = 'Good'
@@ -104,15 +104,7 @@ def SomeFunction(request):
         response = dict()
         response.update({'name': name, 'url':url})
         return JsonResponse(response, status)
-    elif request.header.get('x-requested-with') == 'XMLHttpRequest':
-        is_ajax = True
-        name = request.GET['name']
-        url = request.GET['url']
-        status = 'Good'
-
-        response = dict()
-        response.update({'name': name, 'url':url})
-        return JsonResponse(response, status)
+    
     else:
         status = 'This is very Bad'
         return HttpResponse(status)
