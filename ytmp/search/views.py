@@ -106,7 +106,7 @@ def SomeFunction(request):
 
         response.update({'title': request.POST['title'], 'url' : request.POST['url']})
         status = "Good"
-        return JsonResponse(response,status )
+        return HttpResponse(response,status )
         #return HttpResponse('Ajax is working')
     else:
             status = "This not working yet"
