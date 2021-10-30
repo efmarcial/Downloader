@@ -100,13 +100,15 @@ def SomeFunction(request):
     
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
-    if is_ajax == 'POST':
+    if is_ajax :
+        if request.method == 'PSOT':
         
-        response = dict()
+            response = dict()
 
-        response.update({'title': request.POST['title'], 'url' : request.POST['url']})
-        status = "Good"
-        return JsonResponse(response,status )
+            response.update({'title': request.POST['title'], 'url' : request.POST['url']})
+            status = "Good"
+            return JsonResponse(response,status )
+        return HttpResponse('Ajax is working')
     else:
             status = "This not working yet"
             return HttpResponse(status)
