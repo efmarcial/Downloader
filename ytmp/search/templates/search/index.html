@@ -7,7 +7,6 @@
     <title>Search YouTube</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870728661073684"
      crossorigin="anonymous"></script>
-
      <script async src="{% static 'search/HelloWorld.js'  %}"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -112,9 +111,12 @@
           'url': url,
           'name':name
         },
+        datatype: 'json',
         success: function(data){
+          alert(data)
           console.log("everything checks out!!")
-        }
+        },
+        
       });
 
     };

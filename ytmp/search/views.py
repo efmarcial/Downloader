@@ -6,8 +6,9 @@ from django.conf import settings
 from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
+from django.http import JsonResponse
 
-
+from static.search import results
 # Create your views here.
 
 def index(request):
@@ -97,13 +98,14 @@ def download_file(request):
 
 def SomeFunction(request):
     user = request.user 
-    if request.method == "POST" and request.is_ajax():
+    if request.method and request.is_ajax == 'POST':
         name = request.POST['name']
         url = request.POST['url']
         status = 'Good'
-        print(url)
-        print('\n\n', name)
-        return HttpResponse(status)
+
+        response = dict()
+        response.update({'name': name, 'url':url})
+        return JsonResponse(response)
     else:
         status = 'Bad'
         return HttpResponse(status)
