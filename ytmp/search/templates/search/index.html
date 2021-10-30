@@ -107,8 +107,9 @@
       var title = name;
       var path = url;
       $.ajax({
-        type: 'POST',
+        
         url: 'ajax/foo/',
+        type: 'POST',
         data : {
           'title':title,
           'url'  : path
