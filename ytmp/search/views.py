@@ -112,7 +112,7 @@ def SomeFunction(request):
         url = request.POST['url']
 
         status = "Good: ", name, url
-        
+
         return HttpResponse(status)
         #return HttpResponse('Ajax is working')
     else:
