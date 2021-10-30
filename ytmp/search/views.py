@@ -96,7 +96,6 @@ def download_file(request):
     return response
 
 def SomeFunction(request):
-    user = request.user 
     if request.method and request.is_ajax == 'POST':
         name = request.POST['name']
         url = request.POST['url']
@@ -104,7 +103,7 @@ def SomeFunction(request):
 
         response = dict()
         response.update({'name': name, 'url':url})
-        return JsonResponse(response)
+        return JsonResponse(response, status)
     else:
-        status = 'Bad'
+        status = 'This is very Bad'
         return HttpResponse(status)
