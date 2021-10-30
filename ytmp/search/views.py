@@ -96,7 +96,7 @@ def download_file(request):
     return response
 
 def SomeFunction(request):
-    if request.is_ajax == 'POST':
+    if request.is_ajax or request.method == 'POST':
         name = request.GET['name']
         url = request.GET['url']
         status = 'Good'
@@ -106,5 +106,5 @@ def SomeFunction(request):
         return JsonResponse(response, status)
     
     else:
-        status = 'This is very Bad'
+        status = 'This is still very Bad'
         return HttpResponse(status)
