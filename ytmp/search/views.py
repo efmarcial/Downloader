@@ -8,7 +8,6 @@ from django.http import HttpResponse, response
 import mimetypes, os
 from django.http import JsonResponse
 
-from static.search import results
 # Create your views here.
 
 def index(request):
