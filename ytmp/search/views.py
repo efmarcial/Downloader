@@ -104,8 +104,11 @@ def SomeFunction(request):
         
         response = dict()
 
-        response.update({'title': request.POST['title'], 'url' : request.POST['url']})
-        status = "Good"
+        response.update({
+            'title': request.POST['title'], 
+            'url' : request.POST['url'],
+            'status' : "Good"})
+        status = "Good: ", response['title'], ' ', response['name']
         return HttpResponse(status)
         #return HttpResponse('Ajax is working')
     else:
