@@ -111,7 +111,7 @@ def SomeFunction(request):
             'status' : "Good"})
         name = request.POST['title']
         url = request.POST['url']
-        Convert(name=name, path=url)
+        #Convert(name=name, path=url)
         status = "Good: ", name, url
 
         return HttpResponse(status)
@@ -120,10 +120,10 @@ def SomeFunction(request):
             status = "This not working yet"
             return HttpResponse(status)
 
-def Convert(name, path):
+def Convert():
 
-    video_url = path
-    video_name = name
+    video_url = ''
+    video_name = ''
 
     video_info = youtube_dl.YoutubeDL().extract_info(
         url= video_url,download=False)
