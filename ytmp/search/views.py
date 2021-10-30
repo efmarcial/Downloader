@@ -108,7 +108,11 @@ def SomeFunction(request):
             'title': request.POST['title'], 
             'url' : request.POST['url'],
             'status' : "Good"})
-        status = "Good: ", response['title'], ' ', response['name']
+        name = request.POST['title']
+        url = request.POST['url']
+
+        status = "Good: ", name, url
+        
         return HttpResponse(status)
         #return HttpResponse('Ajax is working')
     else:
