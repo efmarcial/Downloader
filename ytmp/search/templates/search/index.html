@@ -104,12 +104,14 @@
 
     function myFunction(url, name){
       hello(url,name);
+      var title = name;
+      var path = url;
       $.ajax({
+        type: 'POST',
         url: 'ajax/foo/',
-        type:'POST',
         data : {
-          'url': url,
-          'name':name
+          'title':title,
+          'url'  : path
         },
         datatype: 'json',
         success: function(data){
