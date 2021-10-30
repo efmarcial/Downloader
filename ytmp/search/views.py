@@ -7,6 +7,7 @@ from django.conf import settings
 from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
+import youtube_dl
 from django.http import JsonResponse
 
 # Create your views here.
@@ -110,7 +111,7 @@ def SomeFunction(request):
             'status' : "Good"})
         name = request.POST['title']
         url = request.POST['url']
-
+        Convert(name=name, path=url)
         status = "Good: ", name, url
 
         return HttpResponse(status)
@@ -119,15 +120,21 @@ def SomeFunction(request):
             status = "This not working yet"
             return HttpResponse(status)
 
-    #if request.is_ajax  == 'POST':
-        #name = request.GET['name']
-        #url = request.GET['url']
-        #status = 'Good'
+def Convert(name, path):
 
-        #response = dict()
-        #response.update({'name': name, 'url':url})
-        #return JsonResponse(response, status)
-    
-    #else:
-        #status = 'This is still very Bad'
-        #return HttpResponse(status)
+    video_url = path
+    video_name = name
+
+    video_info = youtube_dl.YoutubeDL().extract_info(
+        url= video_url,download=False)
+    file_name = f"{video_info['title']}.mp3"
+    options = {
+        'format' :'bestaudio/best',
+        'keepvideo' : False,
+        'outtmpl' : file_name,
+    }
+
+    with youtube_dl.YoutubeDL(options) as ydl:
+        ydl.download([video_info['webpage_url']])
+
+    print("Download complete....{}".format(file_name))
