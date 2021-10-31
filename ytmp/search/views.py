@@ -82,7 +82,7 @@ def SomeFunction(request):
          
         #Convert(request,url)
 
-        status = Convert()
+        status = "Your clicked on ", name
 
         return HttpResponse(status)
         #return HttpResponse('Ajax is working')
