@@ -105,6 +105,4 @@ def SomeFunction(request):
     else:
             status = "This not working yet"
             return HttpResponse(status)
-        
-
-
+    
