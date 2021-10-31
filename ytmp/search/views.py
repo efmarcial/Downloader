@@ -1,6 +1,7 @@
 
 from json.encoder import JSONEncoder
 from math import e
+import re
 import requests 
 from re import search
 from django.shortcuts import render
@@ -79,7 +80,7 @@ def SomeFunction(request):
         
         name = request.POST['title']
         url = request.POST['url']
-        Convert(url)
+        Convert(request, url)
         status = "Good: ", name, url
 
         return HttpResponse(status)
@@ -102,6 +103,8 @@ def Convert(url):
 
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download(url)
+
+    return HttpResponse('Download.....')
         
 
 #'outtmpl': 'e:/python/downloadedsongs/%(title)s.%(ext)s'
