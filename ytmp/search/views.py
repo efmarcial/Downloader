@@ -80,7 +80,19 @@ def SomeFunction(request):
         
         name = request.POST['title']
         url = request.POST['url']
-        Convert(request, url)
+            # Download a file with only audio, to save space
+        # if the final goal is to convert to mp3
+
+        ydl_opts = {
+            'format':'bestaudio',
+            'outtmpl': './static/search/%(title)s.%(ext)s',
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+        }
+
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download(url)
+
         status = "Good: ", name, url
 
         return HttpResponse(status)
@@ -89,22 +101,6 @@ def SomeFunction(request):
             status = "This not working yet"
             return HttpResponse(status)
 
-def Convert(url):
 
-    # Download a file with only audio, to save space
-    # if the final goal is to convert to mp3
 
-    ydl_opts = {
-        'format':'bestaudio',
-        'outtmpl': './static/search/%(title)s.%(ext)s',
-        'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3',
-    }
-
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.download(url)
-
-    return HttpResponse('Download.....')
-        
-
-#'outtmpl': 'e:/python/downloadedsongs/%(title)s.%(ext)s'
+    
