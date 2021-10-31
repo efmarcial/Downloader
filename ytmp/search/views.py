@@ -7,7 +7,7 @@ from django.conf import settings
 from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
-import youtube_dl
+from pytube import YouTube
 from django.http import JsonResponse
 
 # Create your views here.
@@ -69,34 +69,6 @@ def index(request):
 
 
 
-def download_file(request):
-
-    # Define Django project base directory
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    # Define text file name
-    filename = "audio.mp3"
-
-    # Define the full file path
-    filepath = BASE_DIR+'/ytmp/Files/' + filename
-    
-    # Open the file for reading content
-    path = open(filepath, 'r')
-
-    # Set the mime type 
-
-    mime_type, _ = mimetypes.guess_type(filepath)
-
-    # Set the return value of the HttpRespnse
-
-    response = HttpResponse(path, content=mime_type)
-
-    # Set the HTTP header for sending the browser
-    response['Content-Disposition'] = 'attachment; filename=%s' % filename
-
-    # Return the response value
-    return response
-
 def SomeFunction(request):
     
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
@@ -111,7 +83,7 @@ def SomeFunction(request):
             'status' : "Good"})
         name = request.POST['title']
         url = request.POST['url']
-        #Convert(name=name, path=url)
+        Convert(url)
         status = "Good: ", name, url
 
         return HttpResponse(status)
@@ -120,21 +92,12 @@ def SomeFunction(request):
             status = "This not working yet"
             return HttpResponse(status)
 
-def Convert():
+def Convert(url):
 
-    video_url = ''
-    video_name = ''
+    # Download a file with only audio, to save space
+    # if the final goal is to convert to mp3
 
-    video_info = youtube_dl.YoutubeDL().extract_info(
-        url= video_url,download=False)
-    file_name = f"{video_info['title']}.mp3"
-    options = {
-        'format' :'bestaudio/best',
-        'keepvideo' : False,
-        'outtmpl' : file_name,
-    }
-
-    with youtube_dl.YoutubeDL(options) as ydl:
-        ydl.download([video_info['webpage_url']])
-
-    print("Download complete....{}".format(file_name))
+    youtube_link = url
+    y = YouTube(youtube_link)
+    t = y.streams.filter(only_audio=True).all()
+    t[0].download(output_path='./static/tmp/')

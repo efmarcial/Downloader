@@ -4,3 +4,4 @@ django-heroku
 isodate
 requests
 youtube_dl
+pytube
