@@ -89,6 +89,7 @@ def SomeFunction(request):
     else:
             status = "This not working yet"
             return HttpResponse(status)
+    
 
 
 def Convert(request):
@@ -108,3 +109,4 @@ def Convert(request):
                 ydl.download(url)
 
         return HttpResponse("Download Commplete")
+Convert()
