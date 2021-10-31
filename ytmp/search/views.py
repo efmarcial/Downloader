@@ -76,13 +76,13 @@ def SomeFunction(request):
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
     if is_ajax :
-        
+        global url
         name = request.POST['title']
         url = request.POST['url']
          
         #Convert(request,url)
 
-        status = Convert(url=url)
+        status = Convert()
 
         return HttpResponse(status)
         #return HttpResponse('Ajax is working')
@@ -91,7 +91,7 @@ def SomeFunction(request):
             return HttpResponse(status)
 
 
-def Convert(request, url):
+def Convert(request):
 
        # Download a file with only audio, to save space
         # if the final goal is to convert to mp3
