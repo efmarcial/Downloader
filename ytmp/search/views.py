@@ -76,6 +76,7 @@ def Convert(request):
         # if the final goal is to convert to mp3
         
         if request.method == 'POST':
+            r = requests.get(url)
             ydl_opts = {
                 'format':'bestaudio',
                 'outtmpl': './static/search/%(title)s.%(ext)s',
@@ -84,7 +85,7 @@ def Convert(request):
             }
 
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download(url)
+                ydl.download(r)
 
         return HttpResponse("Download Commplete")
 
