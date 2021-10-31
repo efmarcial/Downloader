@@ -79,7 +79,21 @@ def SomeFunction(request):
         
         name = request.POST['title']
         url = request.POST['url']
-            # Download a file with only audio, to save space
+         
+        #Convert(request,url)
+
+        status = Convert(request, url)
+
+        return HttpResponse(status)
+        #return HttpResponse('Ajax is working')
+    else:
+            status = "This not working yet"
+            return HttpResponse(status)
+
+
+def Convert(request, url):
+
+       # Download a file with only audio, to save space
         # if the final goal is to convert to mp3
         
         if request.method == 'POST':
@@ -92,14 +106,5 @@ def SomeFunction(request):
 
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download(url)
-    
 
-        status = "Good: ", name, url
-
-        return HttpResponse(status)
-        #return HttpResponse('Ajax is working')
-    else:
-            status = "This not working yet"
-            return HttpResponse(status)
-
-
+        return HttpResponse("Download Commplete")
