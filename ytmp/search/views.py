@@ -76,7 +76,8 @@ def Convert(request):
         # if the final goal is to convert to mp3
         
         if request.method == 'POST':
-            r = requests.get(url)
+            path = request.POST['path']
+            r = requests.get(path)
             ydl_opts = {
                 'format':'bestaudio',
                 'outtmpl': './static/search/%(title)s.%(ext)s',
