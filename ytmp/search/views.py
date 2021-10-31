@@ -1,5 +1,6 @@
 
 from json.encoder import JSONEncoder
+from math import e
 import requests 
 from re import search
 from django.shortcuts import render
@@ -7,8 +8,9 @@ from django.conf import settings
 from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
-from pytube import YouTube
+from youtube_dl import YoutubeDL
 from django.http import JsonResponse
+import youtube_dl
 
 # Create your views here.
 
@@ -91,7 +93,15 @@ def Convert(url):
     # Download a file with only audio, to save space
     # if the final goal is to convert to mp3
 
-    youtube_link = url
-    y = YouTube(youtube_link)
-    t = y.streams.filter(only_audio=True).all()
-    t[0].download(output_path='./static/search/')
+    ydl_opts = {
+        'format':'bestaudio',
+        'outtmpl': './static/search/%(title)s.%(ext)s',
+        'key': 'FFmpegExtractAudio',
+        'preferredcodec': 'mp3',
+    }
+
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download(url)
+        
+
+#'outtmpl': 'e:/python/downloadedsongs/%(title)s.%(ext)s'
