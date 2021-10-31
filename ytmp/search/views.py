@@ -72,10 +72,6 @@ def index(request):
 
 def Convert(request):
 
-    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-       # Download a file with only audio, to save space
-        # if the final goal is to convert to mp3
-    if is_ajax:    
         if request.method == 'POST':
             path = request.POST['path']
             r = requests.get(path)
