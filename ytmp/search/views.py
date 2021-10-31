@@ -2,6 +2,7 @@
 from json.encoder import JSONEncoder
 from math import e
 import re
+from ssl import CERT_NONE
 import requests 
 from re import search
 from django.shortcuts import render
@@ -69,29 +70,6 @@ def index(request):
 
     return render(request, 'search/index.html',context)
 
-
-
-def SomeFunction(request):
-    
-    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-
-    if is_ajax :
-        global url
-        name = request.POST['title']
-        url = request.POST['url']
-         
-        #Convert(request,url)
-
-        status = "Your clicked on ", name
-
-        return HttpResponse(status)
-        #return HttpResponse('Ajax is working')
-    else:
-            status = "This not working yet"
-            return HttpResponse(status)
-    
-
-
 def Convert(request):
 
        # Download a file with only audio, to save space
@@ -109,3 +87,24 @@ def Convert(request):
                 ydl.download(url)
 
         return HttpResponse("Download Commplete")
+
+def SomeFunction(request):
+    
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+    if is_ajax :
+        global url
+        name = request.POST['title']
+        url = request.POST['url']
+         
+
+        status = "Your clicked on ", name
+
+        return HttpResponse(status)
+        #return HttpResponse('Ajax is working')
+    else:
+            status = "This not working yet"
+            return HttpResponse(status)
+        
+
+
