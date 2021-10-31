@@ -72,9 +72,10 @@ def index(request):
 
 def Convert(request):
 
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
        # Download a file with only audio, to save space
         # if the final goal is to convert to mp3
-        
+    if is_ajax:    
         if request.method == 'POST':
             path = request.POST['path']
             r = requests.get(path)
@@ -88,7 +89,13 @@ def Convert(request):
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download(r)
 
-        return HttpResponse("Download Commplete")
+            return HttpResponse("Download Commplete")
+        else:
+
+            status = 'Not yet but almost. Go For it'
+            
+            return HttpResponse(status)
+
 
 def SomeFunction(request):
     
