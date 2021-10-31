@@ -75,12 +75,6 @@ def SomeFunction(request):
 
     if is_ajax :
         
-        response = dict()
-
-        response.update({
-            'title': request.POST['title'], 
-            'url' : request.POST['url'],
-            'status' : "Good"})
         name = request.POST['title']
         url = request.POST['url']
         Convert(url)
