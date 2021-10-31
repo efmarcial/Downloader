@@ -82,7 +82,17 @@ def SomeFunction(request):
             # Download a file with only audio, to save space
         # if the final goal is to convert to mp3
         
-        Convert(request,url)
+        if request.method == 'POST':
+            ydl_opts = {
+                'format':'bestaudio',
+                'outtmpl': './static/search/%(title)s.%(ext)s',
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+            }
+
+            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+                ydl.download(url)
+    
 
         status = "Good: ", name, url
 
@@ -93,18 +103,3 @@ def SomeFunction(request):
             return HttpResponse(status)
 
 
-
-def Convert(request, url):
-
-    if request.method == 'POST':
-        ydl_opts = {
-            'format':'bestaudio',
-            'outtmpl': './static/search/%(title)s.%(ext)s',
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-        }
-
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            ydl.download(url)
-    
-    return HttpResponse('Downloaded video mp3')
