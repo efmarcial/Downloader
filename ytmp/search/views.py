@@ -10,7 +10,6 @@ from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
 from youtube_dl import YoutubeDL
-from django.http import JsonResponse
 import youtube_dl
 
 # Create your views here.
@@ -82,16 +81,8 @@ def SomeFunction(request):
         url = request.POST['url']
             # Download a file with only audio, to save space
         # if the final goal is to convert to mp3
-
-        ydl_opts = {
-            'format':'bestaudio',
-            'outtmpl': './static/search/%(title)s.%(ext)s',
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-        }
-
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            ydl.download(url)
+        
+        Convert(request,url)
 
         status = "Good: ", name, url
 
@@ -103,4 +94,17 @@ def SomeFunction(request):
 
 
 
+def Convert(request, url):
+
+    if request.method == 'POST':
+        ydl_opts = {
+            'format':'bestaudio',
+            'outtmpl': './static/search/%(title)s.%(ext)s',
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+        }
+
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download(url)
+    
     
