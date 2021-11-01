@@ -96,9 +96,9 @@ def SomeFunction(request):
         name = request.POST['title']
         url = request.POST['url']
          
-        Convert()
+        status = Convert()
 
-        status = "Your clicked on ", name
+        #status = "Your clicked on ", name
 
         return HttpResponse(status)
         #return HttpResponse('Ajax is working')
