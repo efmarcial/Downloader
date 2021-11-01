@@ -69,27 +69,8 @@ def index(request):
 
     return render(request, 'search/index.html',context)
 
-def Convert(url):
-        try:
-            video_url = requests.get(url)
 
-            yt = YouTube(video_url)
-
-            video =yt.streams.filter(only_audio=True).first()
-
-            destination = 'static/search/' or '.'
-
-            out_file = video.download(output_path=destination)
-
-            base, ext = os.path.splitext(out_file)
-
-            new_file = base + '.mp3'
-            os.rename(out_file, new_file)
-            
-
-            return "Download Commplete"
-        except:
-            return "Something is not working fix it now!!!"
+        
 
 def SomeFunction(request):
     
@@ -100,13 +81,28 @@ def SomeFunction(request):
         name = request.POST['title']
         url = request.POST['url']
          
-        status = Convert(url)
+        
 
-        #status = "Your clicked on ", name
+        status = "Your clicked on ", name
 
-        return HttpResponse(status)
-        #return HttpResponse('Ajax is working')
+        #return HttpResponse(status)
     else:
             status = "This not working yet"
             return HttpResponse(status)
-    
+
+    try:
+            
+
+        yt = YouTube(url)
+
+        video =yt.streams.filter(only_audio=True).first()
+
+        destination = 'D:/Downloads' 
+
+        video_file=video.download(output_path=destination)
+
+        print(yt)
+        print('\n\n',video_file)
+        return HttpResponse("Download Commplete")
+    except:
+        return HttpResponse("Something is not working fix it now!!!")
