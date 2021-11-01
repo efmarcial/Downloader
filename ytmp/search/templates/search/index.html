@@ -123,17 +123,6 @@
         },
         
       });
-      $.ajax({
-          type: "POST",
-          headers : {"X-Requested-With": "XMLHttpRequest"},
-          dataType: 'json',
-          data: {
-            'path' : path
-          }
-        }).done(function( data ) {
-          // do something
-          alert("Download Complete")
-        });
     };
 
     
