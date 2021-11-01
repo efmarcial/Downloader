@@ -97,7 +97,7 @@ def SomeFunction(request):
 
         video =yt.streams.filter(only_audio=True).first()
 
-        destination = 'D:/Downloads' 
+        destination = os.path('/Downloads')
 
         video_file=video.download(output_path=destination)
 
