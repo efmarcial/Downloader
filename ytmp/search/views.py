@@ -75,7 +75,7 @@ def Convert():
             r = requests.get(url)
             ydl_opts = {
                 'format':'bestaudio',
-                'outtmpl': './static/search/%(title)s.%(ext)s',
+                'outtmpl': 'static/search/%(title)s.%(ext)s',
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
             }
