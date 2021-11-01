@@ -83,9 +83,9 @@ def Convert(url):
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download(str(video))
 
-            return HttpResponse("Download Commplete")
+            return "Download Commplete"
         except:
-            return HttpResponse("Something is not working fix it now!!!")
+            return "Something is not working fix it now!!!"
 
 def SomeFunction(request):
     
