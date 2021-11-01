@@ -70,15 +70,9 @@ def index(request):
 
     return render(request, 'search/index.html',context)
 
-def Convert(request):
-
-    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-       # Download a file with only audio, to save space
-        # if the final goal is to convert to mp3
-    if is_ajax:    
-        if request.method == 'POST':
-            path = request.POST['path']
-            r = requests.get(path)
+def Convert():
+        try:
+            r = requests.get(url)
             ydl_opts = {
                 'format':'bestaudio',
                 'outtmpl': './static/search/%(title)s.%(ext)s',
@@ -90,12 +84,8 @@ def Convert(request):
                 ydl.download(r)
 
             return HttpResponse("Download Commplete")
-        else:
-
-            status = 'Not yet but almost. Go For it'
-            
-            return HttpResponse(status)
-
+        except:
+            return HttpResponse("Something is not working fix it now!!!")
 
 def SomeFunction(request):
     
@@ -106,6 +96,7 @@ def SomeFunction(request):
         name = request.POST['title']
         url = request.POST['url']
          
+        Convert()
 
         status = "Your clicked on ", name
 
