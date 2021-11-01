@@ -10,8 +10,7 @@ from django.conf import settings
 from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
-from youtube_dl import YoutubeDL
-import youtube_dl
+from pytube import YouTube
 
 # Create your views here.
 
@@ -72,16 +71,21 @@ def index(request):
 
 def Convert(url):
         try:
-            video = requests.get(url)
-            ydl_opts = {
-                'format':'bestaudio',
-                'outtmpl': 'static/search/%(title)s.%(ext)s',
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-            }
+            video_url = requests.get(url)
 
-            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download(str(video))
+            yt = YouTube(video_url)
+
+            video =yt.streams.filter(only_audio=True).first()
+
+            destination = 'static/search/' or '.'
+
+            out_file = video.download(output_path=destination)
+
+            base, ext = os.path.splitext(out_file)
+
+            new_file = base + '.mp3'
+            os.rename(out_file, new_file)
+            
 
             return "Download Commplete"
         except:
