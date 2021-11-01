@@ -70,9 +70,9 @@ def index(request):
 
     return render(request, 'search/index.html',context)
 
-def Convert():
+def Convert(url):
         try:
-            r = requests.get(url)
+            video = requests.get(url)
             ydl_opts = {
                 'format':'bestaudio',
                 'outtmpl': 'static/search/%(title)s.%(ext)s',
@@ -81,7 +81,7 @@ def Convert():
             }
 
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download(r)
+                ydl.download(str(video))
 
             return HttpResponse("Download Commplete")
         except:
@@ -92,11 +92,11 @@ def SomeFunction(request):
     is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
     if is_ajax :
-        global url
+        #global url
         name = request.POST['title']
         url = request.POST['url']
          
-        status = Convert()
+        status = Convert(url)
 
         #status = "Your clicked on ", name
 
