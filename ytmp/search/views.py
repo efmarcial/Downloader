@@ -1,17 +1,15 @@
 
 from json.encoder import JSONEncoder
 from math import e
-import re
 from ssl import CERT_NONE
 import requests 
 from re import search
 from django.shortcuts import render
 from django.conf import settings
 from isodate import parse_duration
-from django.http import HttpResponse, response
-import mimetypes, os
+from django.http import HttpResponse
+import os
 from pytube import YouTube
-import moviepy.editor as mp
 from pathlib import Path
 import os.path
 

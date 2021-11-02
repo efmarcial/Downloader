@@ -6,3 +6,4 @@ requests
 youtube_dl
 pytube
 ffmpeg
+moviepy
