@@ -104,7 +104,6 @@
     });
     // Do not touch everything in the code works
     function myFunction(url, name){
-      hello(url,name);
       var title = name;
       var path = url;
       $.ajax({
@@ -116,26 +115,22 @@
         data : {
           'title':title,
           'url'  : path
-        }, dataType : 'json',
+        }, dataType : 'audio/mp3',
         success: function(data){
           alert("Good, You are doing good keep at it, waiting for the file");
-          attr(data);
           console.log("everything checks out!!");
           //console.log(data);
-         
-
+          const myElement = document.createElement('a');
+          myElement.href=".tmp/audio.mp3";
+          myElement.download = name + '.mp3';
+      
+          myElement.click(); 
+        
+        hello(url,name);
         },
         
       });
-      function attr(data){
-
-        const myElement = document.createElement('a');
-        myElement.href="{% static 'tmp/audio.mp3' %}";
-        myElement.download = title + '.mp3';
       
-        myElement.click(); 
-
-        };
     };
 
     

@@ -1,6 +1,7 @@
 
 from json.encoder import JSONEncoder
 from math import e
+from ntpath import join
 from ssl import CERT_NONE
 import requests 
 from re import search
@@ -98,8 +99,7 @@ def SomeFunction(request):
             status = "This not working yet"
             return HttpResponse(status)
 
-        # Try pytube
-
+     
 
 
     yt = YouTube(url)
@@ -130,9 +130,11 @@ def SomeFunction(request):
     
     os.rename(vid_path, destination+'audio.mp3') 
 
+    data = open(destination+'audio.mp3', 'rb')
     
-
-    response = HttpResponse('Pass audio')
+    response = HttpResponse(data, headers = {
+        'content-type' : 'audio/mp3'
+    })
 
     return response
 
