@@ -116,8 +116,7 @@
         data : {
           'title':title,
           'url'  : path
-        },
-        dataType: 'binary',
+        }, dataType : 'json',
         success: function(data){
           alert("Good, You are doing good keep at it, waiting for the file");
           attr(data);
@@ -129,11 +128,7 @@
         
       });
       function attr(data){
-        ///console.log(data);
-        //var blob = new Blob([data], {
-         // type: 'application/mp3'
-        //});
-        //console.log(blob)
+
         const myElement = document.createElement('a');
         myElement.href="{% static 'tmp/audio.mp3' %}";
         myElement.download = title + '.mp3';

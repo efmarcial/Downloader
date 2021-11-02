@@ -93,7 +93,7 @@ def SomeFunction(request):
 
         status = "Your clicked on ", name
 
-        #return HttpResponse(status)
+        #return HttpResponse(statu
     else:
             status = "This not working yet"
             return HttpResponse(status)
@@ -133,7 +133,6 @@ def SomeFunction(request):
     
 
     response = HttpResponse('Pass audio')
-    response['content-type'] = 'application/mp3'
 
     return response
 
