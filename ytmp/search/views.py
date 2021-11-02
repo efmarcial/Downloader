@@ -11,8 +11,18 @@ from isodate import parse_duration
 from django.http import HttpResponse, response
 import mimetypes, os
 from pytube import YouTube
+import moviepy.editor as mp
+from pathlib import Path
+import os.path
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here.
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+print(PROJECT_ROOT)
+print(BASE_DIR)
 
 def index(request):
 
@@ -90,19 +100,42 @@ def SomeFunction(request):
             status = "This not working yet"
             return HttpResponse(status)
 
-    try:
-            
+        # Try pytube
 
-        yt = YouTube(url)
 
-        video =yt.streams.filter(only_audio=True).first()
 
-        destination = os.path('D:/Downloads')
+    yt = YouTube(url)
 
-        video_file=video.download(output_path=destination)
+    video =yt.streams.filter(only_audio=True).first()
+        #print(video)
 
-        print(yt)
-        print('\n\n',video_file)
-        return HttpResponse("Download Commplete")
-    except:
-        return HttpResponse("Something is not working fix it now!!!")
+    destination = PROJECT_ROOT + "/static/tmp/"
+        #print(destination)  
+
+    tmpDir = os.listdir(destination)
+    for item in tmpDir:
+        if item.endswith('.mp3'):
+            os.remove(os.path.join(destination, item))
+        
+    video_file=video.download(destination)
+
+    base, ext = os.path.splitext(video_file)
+    new_file = base + '.mp3'
+    os.rename(video_file, new_file)
+
+    tmpDir = os.listdir(destination)
+    for item in tmpDir:
+        if item.endswith('mp3'):
+            vid_path = destination + item
+            print(item)
+
+    
+    os.rename(vid_path, destination+'audio.mp3') 
+
+    
+
+    response = HttpResponse('Pass audio')
+    response['content-type'] = 'application/mp3'
+
+    return response
+

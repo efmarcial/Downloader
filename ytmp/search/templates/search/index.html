@@ -70,7 +70,7 @@
                 <div id='divBtn' class="btn-group">
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   {% csrf_token %}
-                  <button id='demo' onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary" download>Download</button>
+                  <a id='demo'  onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary"  >Download</a>
                   
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
@@ -84,6 +84,7 @@
     </div>
     
   </div>
+
   <script>
     // using jQuery get csrftoken from your HTML
     var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
@@ -116,13 +117,29 @@
           'title':title,
           'url'  : path
         },
-        datatype: 'json',
         success: function(data){
-          alert(data)
-          console.log("everything checks out!!")
+          alert("Good, You are doing good keep at it, waiting for the file");
+          attr(data);
+          console.log("everything checks out!!");
+          //console.log(data);
+         
+
         },
         
       });
+      function attr(data){
+        ///console.log(data);
+        //var blob = new Blob([data], {
+         // type: 'application/mp3'
+        //});
+        //console.log(blob)
+        const myElement = document.createElement('a');
+        myElement.href="{% static 'tmp/audio.mp3' %}";
+        myElement.download = title + '.mp3';
+      
+        myElement.click(); 
+
+        };
     };
 
     

@@ -5,3 +5,4 @@ isodate
 requests
 youtube_dl
 pytube
+ffmpeg
