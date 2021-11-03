@@ -1,11 +1,5 @@
 
-from json.encoder import JSONEncoder
-from math import e
-from ntpath import join
-from ssl import CERT_NONE
-from django.urls.conf import path
 import requests 
-from re import search
 from django.shortcuts import render
 from django.conf import settings
 from isodate import parse_duration
@@ -14,6 +8,9 @@ import os
 from pytube import YouTube
 from pathlib import Path
 import os.path
+
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here.
@@ -80,64 +77,6 @@ def index(request):
     return render(request, 'search/index.html',context)
 
 
-        
-
-def SomeFunction(request):
-    
-    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
-
-    if is_ajax :
-        #global url
-        name = request.POST['title']
-        url = request.POST['url']
-         
-        
-
-        status = "Your clicked on ", name
-
-        #return HttpResponse(statu
-    else:
-            status = "This not working yet"
-            return HttpResponse(status)
-
-     
-
-
-    yt = YouTube(url)
-
-    video =yt.streams.filter(only_audio=True).first()
-        #print(video)
-
-    destination = PROJECT_ROOT + "/static/tmp/"
-        #print(destination)  
-
-    tmpDir = os.listdir(destination)
-    for item in tmpDir:
-        if item.endswith('.mp3'):
-            os.remove(os.path.join(destination, item))
-        
-    video_file=video.download(destination)
-
-    base, ext = os.path.splitext(video_file)
-    new_file = base + '.mp3'
-    os.rename(video_file, new_file)
-
-    tmpDir = os.listdir(destination)
-    for item in tmpDir:
-        if item.endswith('.mp3'):
-            vid_path = destination + item
-            print(item)
-
-    
-    os.rename(vid_path, destination+'audio.mp3') 
-
-    data = open(destination+'audio.mp3', 'rb')
-    
-    response = HttpResponse(data, headers = {
-        'content-type' : 'audio/mp3'
-    })
-
-    return response
 
 def youTube(request):
 
@@ -214,9 +153,10 @@ def download_mp4(url, path):
             
     mp4_path = path + item
 
-    print(mp4_path)
+    path = default_storage.save(mp4_path, ContentFile(b'new content'))
+    print(path)
     
-    return mp4_path
+    return default_storage.open(mp4_path).read()
 
 def convert(url,path):
 
@@ -243,7 +183,7 @@ def convert(url,path):
             name = item
 
     mp3_path = path+name
-
+    path = default_storage.open(mp3_path, ContentFile(b'new content'))
     print(mp3_path)
 
-    return mp3_path
+    return default_storage.open(path).read()
