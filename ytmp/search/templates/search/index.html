@@ -106,6 +106,7 @@
     function myFunction(url, name){
       var title = name;
       var path = url;
+      hello(name, url);
       $.ajax({
         
         url: 'ajax/foo/',
@@ -115,18 +116,18 @@
         data : {
           'title':title,
           'url'  : path
-        }, dataType : 'audio/mp3',
+        }, dataType : 'application/vnd.mp3',
         success: function(data){
           alert("Good, You are doing good keep at it, waiting for the file");
           console.log("everything checks out!!");
           //console.log(data);
           const myElement = document.createElement('a');
-          myElement.href=".tmp/audio.mp3";
+          myElement.href="{% static search/tmp/audio.mp3 %}";
           myElement.download = name + '.mp3';
       
           myElement.click(); 
         
-        hello(url,name);
+        
         },
         
       });
