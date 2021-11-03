@@ -73,10 +73,21 @@
                 <div id='divBtn' class="btn-group">
                   <!-- HTML FORM to pass data to the Django FORM -->
                 <form action="/video/" method="POST">
-                  <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
+                  <div class="form-row">
+                    
+                  <!-- <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a> -->
                   {% csrf_token %}
-                  <input type="button" id="video_url" name="{{video.url}}" class="btn btn-sm btn-outline-secondary" value="Download">
-                  <!--<button id='demo' type="button" onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary" >download</button> -->
+                  <div class="col">
+                      <select id="vid_format" name="formats" class='form-control form-control-sm' >
+                        <option value="mp3">MP3</option>
+                        <option value="mp4">MP4</option>
+                      </select>
+                  </div>
+                  <div class="col">
+                      <input type="submit" id="video_url" name="{{video.url}}" class="btn btn-sm btn-outline-secondary" value="Download">
+                      <!--<button id='demo' type="button" onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary" >download</button> -->
+                    </div>
+                  </div>
                 </form>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
