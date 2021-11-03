@@ -178,9 +178,9 @@ def youTube(request):
          
         file = download_mp4(url=video_url,path=download_path)
 
-        file_path =  file
+        file_path =  open(file, 'rb')
         # use this to return a mp4 file
-        return HttpResponse(file_path, headers={
+        return HttpResponse(file_path.read(), headers={
             'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename="video.mp4'
         })
@@ -188,9 +188,10 @@ def youTube(request):
     elif video_format == 'mp3':   
 
         file = convert(url=video_url, path=download_path)
-        file_path = file
+        file_path = open(file, 'rb')
+
         # use this to return a mp3 file
-        return HttpResponse(file_path, headers={
+        return HttpResponse(file_path.read(), headers={
             'Content-Type' : 'audio/mpeg',
             'Content-Disposition' : 'attachment; filename = "audio.mp3"'
             })
@@ -199,7 +200,7 @@ def download_mp4(url, path):
 
     yt = YouTube(url)
 
-    video =yt.streams.filter().first()
+    video =yt.streams.first()
         #print(video)
 
 
