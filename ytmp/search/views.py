@@ -138,3 +138,15 @@ def SomeFunction(request):
 
     return response
 
+def youTube(request):
+
+    if request.method == "POST":
+
+        video_url = request.POST
+        print("Good it worked")
+        status = "Good it worked"
+    else:
+            status = "didtn work"
+
+            
+    return HttpResponse(status)

@@ -50,7 +50,10 @@
       </div>
       <p>
         <button href="#" type="submit" class="btn btn-primary my-2">YouTube Search</button>
+      <!---
+        This was the Im Feeling llucky btn but in this case we dont need it.
         <button href="#" class="btn btn-secondary my-2">I'm Feeling Lucky</button>
+      -->
       </p>
       </form>
     </div>
@@ -68,10 +71,13 @@
               <p class="card-text">{{video.title}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div id='divBtn' class="btn-group">
+                  <!-- HTML FORM to pass data to the Django FORM -->
+                <form action="/video/" method="POST">
                   <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   {% csrf_token %}
-                  <a id='demo'  onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary"  >Download</a>
-                  
+                  <input type="button" id="video_url" name="{{video.url}}" class="btn btn-sm btn-outline-secondary" value="Download">
+                  <!--<button id='demo' type="button" onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary" >download</button> -->
+                </form>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
               </div>
@@ -122,7 +128,7 @@
           console.log("everything checks out!!");
           //console.log(data);
           const myElement = document.createElement('a');
-          myElement.href="{% static tmp/audio.mp3 %}";
+          myElement.href="{% static 'tmp/audio.mp3' %}";
           myElement.download = name + '.mp3';
       
           myElement.click(); 
