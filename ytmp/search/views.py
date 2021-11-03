@@ -188,7 +188,6 @@ def youTube(request):
     elif video_format == 'mp3':   
 
         file = convert(url=video_url, path=download_path)
-        vid_path = open
         file_path = file
         # use this to return a mp3 file
         return HttpResponse(file_path, headers={
