@@ -181,18 +181,18 @@ def youTube(request):
         file_path =  file
         # use this to return a mp4 file
         return HttpResponse(file_path, headers={
-            'Content-Type' : 'application/vnd.mp4', 
+            'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename="video.mp4'
         })
 
     elif video_format == 'mp3':   
 
         file = convert(url=video_url, path=download_path)
-
+        vid_path = open
         file_path = file
         # use this to return a mp3 file
         return HttpResponse(file_path, headers={
-            'Content-Type' : 'application/vnd.mp3',
+            'Content-Type' : 'audio/mpeg',
             'Content-Disposition' : 'attachment; filename = "audio.mp3"'
             })
 
@@ -215,7 +215,7 @@ def download_mp4(url, path):
     mp4_path = path + item
 
     print(mp4_path)
-      
+    
     return mp4_path
 
 def convert(url,path):
