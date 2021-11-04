@@ -12,11 +12,14 @@ import os.path
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
+from .models import File
+
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here.
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 print(PROJECT_ROOT)
 print(BASE_DIR)
@@ -101,8 +104,8 @@ def youTube(request):
         return HttpResponse(status)
     
 
-    # Path to where the file its going to be downloaded 
-    download_path = PROJECT_ROOT + "/static/tmp/"
+    # Path to where the file its going to be downloaded
+    download_path = PROJECT_ROOT + "/media/"
  
     # Before a file is downloaded check if an mp3 or mp4 file 
     # exist to be deleted for memory storage
@@ -111,17 +114,17 @@ def youTube(request):
         if item.endswith('.mp3') or item.endswith('.mp4'):
             os.remove(os.path.join(download_path, item))
     
-    # Check user input to run a specific function 
+    # Check user input to run a specific function
 
     if video_format == 'mp4':
          
         file = download_mp4(url=video_url,path=download_path)
-
+ 
         file_path =  open(file, 'rb')
         # use this to return a mp4 file
         return HttpResponse(file_path.read(), headers={
-            'Content-Type' : 'audio/mpeg', 
-            'Content-Disposition': 'attachment; filename="video.mp4'
+            'Content-Type' : 'audio/mp4', 
+            'Content-Disposition': 'attachment; filename="video.mp4"'
         })
 
     elif video_format == 'mp3':   
@@ -139,10 +142,9 @@ def download_mp4(url, path):
 
     yt = YouTube(url)
 
-    video =yt.streams.first()
-        #print(video)
-
-
+    video =yt.streams.get_by_itag(137)
+          #print(video)
+    print(video)
     video_tite = yt.title
     video_file=video.download(path)
     print(video_file)
@@ -153,10 +155,10 @@ def download_mp4(url, path):
             
     mp4_path = path + item
 
-    path = default_storage.save(mp4_path, ContentFile(b'new content'))
-    print(path)
     
-    return default_storage.open(mp4_path).read()
+    print(mp4_path)
+    
+    return path
 
 def convert(url,path):
 
@@ -183,7 +185,5 @@ def convert(url,path):
             name = item
 
     mp3_path = path+name
-    path = default_storage.open(mp3_path, ContentFile(b'new content'))
-    print(mp3_path)
-
-    return default_storage.open(path).read()
+    # have to return file path not read file
+    return mp3_path
