@@ -184,6 +184,6 @@ def convert(url,path):
         if item.endswith(".mp3"):
             name = item
 
-    mp3_path = path+name
+    mp3_path = str(path) + '/' + name
     # have to return file path not read file
     return mp3_path
