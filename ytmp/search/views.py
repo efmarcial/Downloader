@@ -14,8 +14,6 @@ from django.core.files.storage import default_storage
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here.
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
