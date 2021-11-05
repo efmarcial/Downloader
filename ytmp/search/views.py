@@ -114,9 +114,10 @@ def youTube(request):
     
     # Check user input to run a specific function
 
-    if video_format == 'mp4':
+    if video_format == 'mp4_hd':
         # Build and store the file in MongoDB
-        file = download_mp4(url=video_url,path=download_path)
+        res = "720p"
+        file = download_mp4HD(url=video_url,path=download_path, res = res)
  
         videp_file = open(file, 'rb')
         # use this to return a mp4 file
@@ -124,6 +125,19 @@ def youTube(request):
         return HttpResponse(videp_file , headers={
              'Content-Type' : 'audio/mp4', 
             'Content-Disposition': 'attachment; filename=' + title + '.mp4'
+        })
+
+    elif video_format == 'mp4_sd':
+        # Build and store the file in MongoDB
+        res = "360p"
+        file = download_mp4SD(url=video_url,path=download_path, res = res)
+ 
+        videp_file = open(file, 'rb')
+        # use this to return a mp4 file
+
+        return HttpResponse(videp_file , headers={
+             'Content-Type' : 'audio/mp4', 
+            'Content-Disposition': 'attachment; filename=' + SD_title + '.mp4'
         })
 
     elif video_format == 'mp3':   
@@ -137,11 +151,11 @@ def youTube(request):
             'Content-Disposition' : 'attachment; filename = ' + video_title + '.mp3'
             })
 
-def download_mp4(url, path):
+def download_mp4HD(url, path, res):
 
     yt = YouTube(url)
 
-    video =yt.streams.filter(res = '720p', progressive="True").first()
+    video =yt.streams.filter(res = res, progressive="True").first()
 
     print(video)
     global title
@@ -190,3 +204,27 @@ def convert(url,path):
     # have to return file path not read file
     return mp3_path
     
+def download_mp4SD(url, path, res):
+
+    yt = YouTube(url)
+
+    video =yt.streams.filter(res = res, progressive="True").first()
+
+    print(video)
+    global SD_title
+    SD_title = yt.title
+    video_file=video.download(path)
+    print(video_file)
+
+    base, ext = os.path.splitext(video_file)
+    new_file = base + '.mp4'
+    os.rename(video_file, new_file)
+
+    for item in os.listdir(path):
+        if item.endswith('.mp4'):
+            name = item
+            
+    mp4_path = path + item
+
+    
+    return mp4_path
