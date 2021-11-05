@@ -9,7 +9,6 @@ from pytube import YouTube
 from pathlib import Path
 import os.path
 
-from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -101,7 +100,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = PROJECT_ROOT + "/media/"
+    download_path = BASE_DIR / "media/"
     #download_path = '/static/media/'
     # Before a file is downloaded check if an mp3 or mp4 file 
     # exist to be deleted for memory storage
@@ -116,11 +115,11 @@ def youTube(request):
         # Build and store the file in MongoDB
         res = "720p"
         file = download_mp4HD(url=video_url,path=download_path, res = res)
- 
-        videp_file = open(file, 'rb')
+        file_name = file 
+        file_path = open(os.path.join(download_path, file_name), 'rb')
         # use this to return a mp4 file
 
-        return HttpResponse(videp_file , headers={
+        return HttpResponse(file_path.read() , headers={
                'Content-Type' : 'audio/mp4', 
             'Content-Disposition': 'attachment; filename=' + title + '.mp4'
         })
@@ -129,11 +128,11 @@ def youTube(request):
         # Build and store the file in MongoDB
         res = "360p"
         file = download_mp4SD(url=video_url,path=download_path, res = res)
- 
-        videp_file = open(file, 'rb')
+        file_name = file 
+        file_path = open(os.path.join(download_path, file_name), 'rb')
         # use this to return a mp4 file
 
-        return HttpResponse(videp_file , headers={
+        return HttpResponse(file_path.read() , headers={
              'Content-Type' : 'audio/mp4', 
             'Content-Disposition': 'attachment; filename=' + SD_title + '.mp4'
         })
@@ -141,7 +140,8 @@ def youTube(request):
     elif video_format == 'mp3':   
 
         file = convert(url=video_url, path=download_path)
-        file_path = open(file, 'rb')
+        file_name = file 
+        file_path = open(os.path.join(download_path, file_name), 'rb')
 
         # use this to return a mp3 file
         return HttpResponse(file_path.read(), headers={
@@ -169,7 +169,7 @@ def download_mp4HD(url, path, res):
         if item.endswith('.mp4'):
             name = item
             
-    mp4_path = path + item
+    mp4_path =  item
 
     
     return mp4_path
@@ -198,7 +198,7 @@ def convert(url,path):
         if item.endswith(".mp3"):
             name = item
 
-    mp3_path = path + name
+    mp3_path =  name
     # have to return file path not read file
     return mp3_path
     
@@ -222,7 +222,7 @@ def download_mp4SD(url, path, res):
         if item.endswith('.mp4'):
             name = item
             
-    mp4_path = path + item
+    mp4_path =  item
 
     
     return mp4_path
