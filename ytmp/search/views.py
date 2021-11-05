@@ -141,8 +141,8 @@ def download_mp4(url, path):
 
     yt = YouTube(url)
 
-    video =yt.streams.get_by_itag(137)
-          #print(video)
+    video =yt.streams.filter(res = '720p', progressive="True").first()
+
     print(video)
     global title
     title = yt.title
