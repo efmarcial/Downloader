@@ -102,7 +102,7 @@ def youTube(request):
 
     # Path to where the file its going to be downloaded
     #download_path = settings.MEDIA_ROOT + '/'
-    download_path = PROJECT_ROOT + '/static/media/'
+    download_path = '/static/media/'
     # Before a file is downloaded check if an mp3 or mp4 file 
     # exist to be deleted for memory storage
     tmpDir = os.listdir(download_path)
