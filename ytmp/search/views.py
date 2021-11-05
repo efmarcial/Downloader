@@ -11,8 +11,6 @@ import os.path
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
-from models import Video
-
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here.
@@ -105,13 +103,13 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = BASE_DIR / 'media'
+    download_path = settings.MEDIA_ROOT + '/'
  
     # Before a file is downloaded check if an mp3 or mp4 file 
     # exist to be deleted for memory storage
     tmpDir = os.listdir(download_path)
     for item in tmpDir:
-        if item.endswith('.mp3') or item.endswith('.mp4'):
+        if item.endswith('.mp3') or item.endswith('.mp4') or item.endswith('.3gg'):
             os.remove(os.path.join(download_path, item))
     
     # Check user input to run a specific function
@@ -120,17 +118,12 @@ def youTube(request):
         # Build and store the file in MongoDB
         file = download_mp4(url=video_url,path=download_path)
  
-        mp4_db = Video()
-        mp4_db.url_video = file
-        mp4_db.save()
-
-        # Serve it up as a download
-        video = Video.objects.get()
+        videp_file = open(file, 'rb')
         # use this to return a mp4 file
 
-        return HttpResponse(video.url_video , headers={
+        return HttpResponse(videp_file , headers={
              'Content-Type' : 'audio/mp4', 
-            'Content-Disposition': 'attachment; filename="video.mp4"'
+            'Content-Disposition': 'attachment; filename=' + title + '.mp4'
         })
 
     elif video_format == 'mp3':   
@@ -141,30 +134,33 @@ def youTube(request):
         # use this to return a mp3 file
         return HttpResponse(file_path.read(), headers={
             'Content-Type' : 'audio/mpeg',
-            'Content-Disposition' : 'attachment; filename = "audio.mp3"'
+            'Content-Disposition' : 'attachment; filename = ' + video_title + '.mp3'
             })
 
 def download_mp4(url, path):
 
     yt = YouTube(url)
 
-    video =yt.streams.first()
+    video =yt.streams.get_by_itag(137)
           #print(video)
     print(video)
-    video_tite = yt.title
+    global title
+    title = yt.title
     video_file=video.download(path)
     print(video_file)
+
+    base, ext = os.path.splitext(video_file)
+    new_file = base + '.mp4'
+    os.rename(video_file, new_file)
 
     for item in os.listdir(path):
         if item.endswith('.mp4'):
             name = item
             
-    mp4_path = BASE_DIR / 'media'
+    mp4_path = path + item
 
     
-    print(mp4_path)
-    
-    return path
+    return mp4_path
 
 def convert(url,path):
 
@@ -174,7 +170,7 @@ def convert(url,path):
     # only_audio is still downloaded as mp4 need to change ext
     video =yt.streams.filter(only_audio=True).first()
         #print(video)
-
+    global video_title
     video_title = yt.title
 
     # Download video file
@@ -190,7 +186,7 @@ def convert(url,path):
         if item.endswith(".mp3"):
             name = item
 
-    mp3_path = str(path) + '/' + name
+    mp3_path = path + name
     # have to return file path not read file
     return mp3_path
     
