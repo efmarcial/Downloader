@@ -11,6 +11,7 @@ import os.path
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from models import Video
 
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -116,12 +117,18 @@ def youTube(request):
     # Check user input to run a specific function
 
     if video_format == 'mp4':
-         
+        # Build and store the file in MongoDB
         file = download_mp4(url=video_url,path=download_path)
  
-        file_path =  open(file, 'rb')
+        mp4_db = Video()
+        mp4_db.url_video = file
+        mp4_db.save()
+
+        # Serve it up as a download
+        video = Video.objects.get()
         # use this to return a mp4 file
-        return HttpResponse(file_path.read(), headers={
+
+        return HttpResponse(video.url_video , headers={
              'Content-Type' : 'audio/mp4', 
             'Content-Disposition': 'attachment; filename="video.mp4"'
         })
@@ -186,3 +193,4 @@ def convert(url,path):
     mp3_path = str(path) + '/' + name
     # have to return file path not read file
     return mp3_path
+    
