@@ -12,7 +12,6 @@ import os.path
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
-from .models import File
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here.
@@ -142,7 +141,7 @@ def download_mp4(url, path):
 
     yt = YouTube(url)
 
-    video =yt.streams.get_by_itag(137)
+    video =yt.streams.first()
           #print(video)
     print(video)
     video_tite = yt.title
@@ -153,7 +152,7 @@ def download_mp4(url, path):
         if item.endswith('.mp4'):
             name = item
             
-    mp4_path = str(path) + '/' + name
+    mp4_path = str(path) + '/' + item
 
     
     print(mp4_path)

@@ -4,9 +4,9 @@ from django.db import models
 
 # Create your models here.
 
-class File(models.Model):
-    video_name = models.CharField(max_length=100)
-    filepath = models.FileField(upload_to='files/', null=True, verbose_name='')
 
+class Video(models.Model):
+    title = models.CharField(max_length=100)
+    url_video = models.FileField(upload_to='media')
     def __str__(self) -> str:
-        return self.video_name + ': ' + str(self.filepath)
+        return self.title

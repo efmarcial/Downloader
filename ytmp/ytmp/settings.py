@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'ytmp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'db-name',
+        'ENFORCE_SCHEMA': False,
+         'CLIENT': {
+                'host': 'mongodb+srv://user_31:1060@cluster0.xi8ly.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+            }  
     }
 }
 
