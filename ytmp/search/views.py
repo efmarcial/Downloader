@@ -152,7 +152,7 @@ def download_mp4(url, path):
         if item.endswith('.mp4'):
             name = item
             
-    mp4_path = str(path) + '/' + item
+    mp4_path = path + '/' + item
 
     
     print(mp4_path)
