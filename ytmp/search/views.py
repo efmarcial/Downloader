@@ -99,7 +99,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    download_path = os.path.join(BASE_DIR, 'staticfiles')
     #download_path = '/static/media/'
 
 
