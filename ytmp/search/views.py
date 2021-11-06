@@ -66,13 +66,13 @@ def index(request):
             videos.append(video_data)
 
     #pass params to the template
+
     context = {
         'videos':videos,
         'post':'post'
     }
 
     return render(request, 'search/index.html',context)
-
 
 
 def youTube(request):
@@ -84,7 +84,7 @@ def youTube(request):
         val = list(video.values())
         postion = val.index('Download')
 
-        # video format and URL 
+        # video format
 
         video_url = key[postion]
         video_format = request.POST['formats']
