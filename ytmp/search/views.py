@@ -102,7 +102,7 @@ def youTube(request):
     download_path = STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     #download_path = '/static/media/'
 
-    
+
     # Before a file is downloaded check if an mp3 or mp4 file
     # exist to be deleted for memory storage
     tmpDir = os.listdir(download_path)
@@ -115,8 +115,7 @@ def youTube(request):
         
         res = "720p"
         file = download_mp4HD(url=video_url,path=download_path, res = res)
-        file_name = file 
-        file_path = open(os.path.join(download_path, file_name), 'rb')
+        file_path = open(file, 'rb')
         # use this to return a mp4 file
 
         return HttpResponse(file_path.read() , headers={
@@ -128,8 +127,7 @@ def youTube(request):
       
         res = "360p"
         file = download_mp4SD(url=video_url,path=download_path, res = res)
-        file_name = file 
-        file_path = open(os.path.join(download_path, file_name), 'rb')
+        file_path = open(file, 'rb')
         # use this to return a mp4 file
 
         return HttpResponse(file_path.read() , headers={
@@ -169,7 +167,7 @@ def download_mp4HD(url, path, res):
         if item.endswith('.mp4'):
             name = item
             
-    mp4_path =  item
+    mp4_path =  path + '/' + item
 
     
     return mp4_path
@@ -198,7 +196,7 @@ def convert(url,path):
         if item.endswith(".mp3"):
             name = item
 
-    mp3_path =  name
+    mp3_path = path + '/' + item
     # have to return file path not read file
     return mp3_path
     
@@ -222,7 +220,7 @@ def download_mp4SD(url, path, res):
         if item.endswith('.mp4'):
             name = item
             
-    mp4_path =  item
+    mp4_path = path + '/' + item
 
     
     return mp4_path
