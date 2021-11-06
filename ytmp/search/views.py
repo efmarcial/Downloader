@@ -138,8 +138,7 @@ def youTube(request):
     elif video_format == 'mp3':   
 
         file = convert(url=video_url, path=download_path)
-        file_name = file 
-        file_path = open(os.path.join(download_path, file_name), 'rb')
+        file_path = open(file, 'rb')
 
         # use this to return a mp3 file
         return HttpResponse(file_path.read(), headers={
