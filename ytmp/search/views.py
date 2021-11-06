@@ -97,11 +97,12 @@ def youTube(request):
      
         return HttpResponse(status)
     
-    #### Possible path ytmp/search/static/media/
 
     # Path to where the file its going to be downloaded
-    download_path = './ytmp/search/static/media/'
+    download_path = STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     #download_path = '/static/media/'
+
+    
     # Before a file is downloaded check if an mp3 or mp4 file
     # exist to be deleted for memory storage
     tmpDir = os.listdir(download_path)
