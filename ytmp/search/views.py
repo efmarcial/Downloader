@@ -158,9 +158,9 @@ def download_mp4HD(url, path, res):
     video_file=video.download(path)
     print(video_file)
 
-    base, ext = os.path.splitext(video_file)
-    new_file = base + '.mp4'
-    os.rename(video_file, new_file)
+    #base, ext = os.path.splitext(video_file)
+    #new_file = base + '.mp4'
+    #os.rename(video_file, new_file)
 
     for item in os.listdir(path):
         if item.endswith('.mp4'):
@@ -211,9 +211,9 @@ def download_mp4SD(url, path, res):
     video_file=video.download(path)
     print(video_file)
 
-    base, ext = os.path.splitext(video_file)
-    new_file = base + '.mp4'
-    os.rename(video_file, new_file)
+    #base, ext = os.path.splitext(video_file)
+    #new_file = base + '.mp4'
+    #os.rename(video_file, new_file)
 
     for item in os.listdir(path):
         if item.endswith('.mp4'):
