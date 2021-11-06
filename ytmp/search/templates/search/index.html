@@ -88,7 +88,7 @@
                       <input type="submit" id="video_url" name="{{video.url}}" class="btn btn-sm btn-outline-secondary" value="Download">
                       <!--<button id='demo' type="button" onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary" >download</button> -->
                     </div>
-                  <div class="col">
+                  <div id="fader" class="col">
                     <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
                   </div>
                   </div>
@@ -154,6 +154,11 @@
       });
       
     };
+
+
+    $('#video_url').click(function() {
+    $('#fader').css('display', 'block');
+    });
 
     
 
