@@ -9,10 +9,9 @@ from pytube import YouTube
 from pathlib import Path
 import os.path
 
-from django.core.files.storage import default_storage
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-# Create your views here.
+# Create your views here
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -102,17 +101,16 @@ def youTube(request):
     # Path to where the file its going to be downloaded
     download_path = BASE_DIR / "media/"
     #download_path = '/static/media/'
-    # Before a file is downloaded check if an mp3 or mp4 file 
+    # Before a file is downloaded check if an mp3 or mp4 file
     # exist to be deleted for memory storage
     tmpDir = os.listdir(download_path)
     for item in tmpDir:
         if item.endswith('.mp3') or item.endswith('.mp4') or item.endswith('.3gg'):
             os.remove(os.path.join(download_path, item))
     
-    # Check user input to run a specific function
 
     if video_format == 'mp4_hd':
-        # Build and store the file in MongoDB
+        
         res = "720p"
         file = download_mp4HD(url=video_url,path=download_path, res = res)
         file_name = file 
@@ -125,7 +123,7 @@ def youTube(request):
         })
 
     elif video_format == 'mp4_sd':
-        # Build and store the file in MongoDB
+      
         res = "360p"
         file = download_mp4SD(url=video_url,path=download_path, res = res)
         file_name = file 

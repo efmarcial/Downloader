@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Search YouTube</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'search/favicon.ico' %}">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870728661073684"
      crossorigin="anonymous"></script>
      <script async src="{% static 'search/HelloWorld.js'  %}"></script>
@@ -15,6 +16,19 @@
 
 
     <style>
+      .alert {
+    display: none;
+  }
+      #fader {
+          opacity: 0.5;
+          background: black;
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          display: none;
+        }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -40,13 +54,13 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Search YouTube</h1>
+      <h1 class="display-3">Search YouTube</h1>
       <p class="lead text-muted">Get the top nine results on YouTube for your query!</p>
       <form method="POST">
       <div class="input-group mb-3">
 
           {%csrf_token%}
-          <input type="text" name="search" class="form-control" aria-label="Username">
+          <input type="text" name="search" class="form-control border border-primary rounded " aria-label="Username">
       </div>
       <p>
         <button href="#" type="submit" class="btn btn-primary my-2">YouTube Search</button>
@@ -60,7 +74,7 @@
   </section>
 
   <div class="album py-5 bg-light">
-    <div id="myDIV" class="container">
+    <div  class="container">
       <div class="row">
         {% csrf_token %}
         {%for video in videos%}
@@ -73,7 +87,7 @@
                 <div id='divBtn' class="btn-group">
                   <!-- HTML FORM to pass data to the Django FORM -->
                 <form action="/video/" method="POST">
-                  <div class="form-row">
+                  <div  class="form-row">
                     
                   <!-- <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a> -->
                   {% csrf_token %}
@@ -85,13 +99,18 @@
                       </select>
                   </div>
                   <div class="col">
-                      <input type="submit" id="video_url" name="{{video.url}}" class="btn btn-sm btn-outline-secondary" value="Download">
+                      <input type="submit" id="video_url" name="{{video.url}}" class="btn btn-sm btn-primary" value="Download">
                       <!--<button id='demo' type="button" onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary" >download</button> -->
                     </div>
-                  <div id="fader" class="col">
-                    <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a>
+                    <a type="button" href="{{video.url}}" class="btn btn-sm btn-danger">View</a>
+                    
+                    
+                  
                   </div>
-                  </div>
+                  <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Success! message sent successfully.
+                        </div>
                 </form>
                 </div>
                 <small class="text-muted">{{video.duration}}</small>
@@ -107,62 +126,12 @@
   </div>
 
   <script>
-    // using jQuery get csrftoken from your HTML
-    var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-
-    function csrfSafeMethod(method) {
-        // these HTTP methods do not require CSRF protection
-        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-    }
-
-    $.ajaxSetup({
-        beforeSend: function (xhr, settings) {
-            // if not safe, set csrftoken
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        }
-    });
-    // Do not touch everything in the code works
-    function myFunction(url, name){
-      var title = name;
-      var path = url;
-      hello(name, url);
-      $.ajax({
-        
-        url: 'ajax/foo/',
-        type: 'POST',
-        headers : {"X-Requested-With": "XMLHttpRequest"},
-        
-        data : {
-          'title':title,
-          'url'  : path
-        }, dataType : 'application/vnd.mp3',
-        success: function(data){
-          alert("Good, You are doing good keep at it, waiting for the file");
-          console.log("everything checks out!!");
-          //console.log(data);
-          const myElement = document.createElement('a');
-          myElement.href="{% static 'tmp/audio.mp3' %}";
-          myElement.download = name + '.mp3';
-      
-          myElement.click(); 
-        
-        
-        },
-        
-      });
-      
-    };
-
-
-    $('#video_url').click(function() {
-    $('#fader').css('display', 'block');
-    });
-
     
-
-     
+    $(document).ready(function(){
+      $('#video_url').click(function(){
+          $('.alert').show()
+        }) 
+    });
 
   </script>
   <!--<script async src="{% static 'search/script.js' %}"></script> -->
