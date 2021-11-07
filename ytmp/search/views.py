@@ -202,9 +202,9 @@ def download_mp4SD(url, path, res):
     
         # use this to return a mp4 file
 
-    with open(BASE_DIR /'staticfiles', SD_title + '.mp4', 'rb') as f:
-        data = f.read()
-        return HttpResponse(data , headers={
+    data =open(BASE_DIR +'/staticfiles'+ SD_title + '.mp4', 'rb')
+    
+    return HttpResponse(data.read() , headers={
              'Content-Type' : 'audio/mp4', 
             'Content-Disposition': 'attachment; filename=' + SD_title + '.mp4'
         })
