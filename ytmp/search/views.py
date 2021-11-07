@@ -198,11 +198,11 @@ def download_mp4SD(url, path, res):
     SD_title = yt.title
 
         
-    video.download(os.path.join(str(BASE_DIR)+'/staticfiles', SD_title))
+    video.download(os.path.join(str(BASE_DIR)+'/staticfiles/', SD_title))
     
         # use this to return a mp4 file
 
-    data =open(str(BASE_DIR) +'/staticfiles'+ SD_title + '.mp4', 'rb')
+    data =open(str(BASE_DIR) +'/staticfiles/'+ SD_title + '.mp4', 'rb')
     
     return HttpResponse(data.read() , headers={
              'Content-Type' : 'audio/mp4', 
