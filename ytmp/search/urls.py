@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('',views.index, name='index' ),
-    path('video/', views.youTube, name="video_url")
+    path('video/', views.youTube, name="video_url"),
+    path('feedback/', views.feedback, name='feedback')
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT )

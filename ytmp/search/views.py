@@ -1,6 +1,8 @@
 
+import re
+from django import forms
 import requests 
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.conf import settings
 from isodate import parse_duration
 from django.http import HttpResponse
@@ -8,6 +10,9 @@ import os
 from pytube import YouTube
 from pathlib import Path
 import os.path
+from .models import Feedback
+from django.contrib import messages
+
 
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -73,7 +78,6 @@ def index(request):
     }
 
     return render(request, 'search/index.html',context)
-
 
 def youTube(request):
 
@@ -198,7 +202,7 @@ def download_mp4SD(url, path, res):
     SD_title = yt.title
 
         
-    video.download(os.path.join(str(BASE_DIR)+'/staticfiles/', SD_title))
+    video.download(str(BASE_DIR) +'/staticfiles/', SD_title)
     
         # use this to return a mp4 file
 
