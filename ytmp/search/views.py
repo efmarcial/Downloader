@@ -114,37 +114,18 @@ def youTube(request):
     if video_format == 'mp4_hd':
         
         res = "720p"
-        file = download_mp4HD(url=video_url,path=download_path, res = res)
-        file_path = open(file, 'rb')
-        # use this to return a mp4 file
-
-        return HttpResponse(file_path.read() , headers={
-               'Content-Type' : 'audio/mp4', 
-            'Content-Disposition': 'attachment; filename=' + title + '.mp4'
-        })
+        download_mp4HD(url=video_url,path=download_path, res = res)
 
     elif video_format == 'mp4_sd':
       
         res = "360p"
         file = download_mp4SD(url=video_url,path=download_path, res = res)
-        file_path = open(file, 'rb')
-        # use this to return a mp4 file
-
-        return HttpResponse(file_path.read() , headers={
-             'Content-Type' : 'audio/mp4', 
-            'Content-Disposition': 'attachment; filename=' + SD_title + '.mp4'
-        })
+        
 
     elif video_format == 'mp3':   
 
-        file = convert(url=video_url, path=download_path)
-        file_path = open(file, 'rb')
+        convert(url=video_url, path=download_path)
 
-        # use this to return a mp3 file
-        return HttpResponse(file_path.read(), headers={
-            'Content-Type' : 'audio/mpeg',
-            'Content-Disposition' : 'attachment; filename = ' + video_title + '.mp3'
-            })
 
 def download_mp4HD(url, path, res):
 
@@ -155,21 +136,23 @@ def download_mp4HD(url, path, res):
     print(video)
     global title
     title = yt.title
-    video_file=video.download(path)
-    print(video_file)
+    yt = YouTube(url)
 
-    #base, ext = os.path.splitext(video_file)
-    #new_file = base + '.mp4'
-    #os.rename(video_file, new_file)
-
-    for item in os.listdir(path):
-        if item.endswith('.mp4'):
-            name = item
-            
-    mp4_path =  path + '/' + item
+    video =yt.streams.filter(res = res, progressive="True").first()
 
     
-    return mp4_path
+    with open(os.path.join(BASE_DIR+'/video', title) + '.mp4', 'wb') as f:
+        for data in video.download():
+            f.write(data)
+        f.close()
+        # use this to return a mp4 file
+
+    with open(os.path.join(BASE_DIR+'/video', title) + '.mp4', 'rb') as f:
+        data = f.read()
+        return HttpResponse(data , headers={
+             'Content-Type' : 'audio/mp4', 
+            'Content-Disposition': 'attachment; filename=' + title + '.mp4'
+        })
 
 def convert(url,path):
 
@@ -179,25 +162,30 @@ def convert(url,path):
     # only_audio is still downloaded as mp4 need to change ext
     video =yt.streams.filter(only_audio=True).first()
         #print(video)
-    global video_title
     video_title = yt.title
 
     # Download video file
-    video_file=video.download(path)
+    #video_file=video.download(path)
     
     # convert mp4 to mp3 file extention
     
-    base, ext = os.path.splitext(video_file)
-    new_file = base + '.mp3'
-    os.rename(video_file, new_file)
+    #base, ext = os.path.splitext(video_file)
+    #new_file = base + '.mp3'
+    #os.rename(video_file, new_file)
+    
 
-    for item in os.listdir(path):
-        if item.endswith(".mp3"):
-            name = item
+    with open(os.path.join(BASE_DIR+'/video', video_title) + '.mp3', 'wb') as f:
+        for data in video.download():
+            f.write(data)
+        f.close()
+        # use this to return a mp4 file
 
-    mp3_path = path + '/' + item
-    # have to return file path not read file
-    return mp3_path
+    with open(os.path.join(BASE_DIR+'/video', video_title) + '.mp3', 'rb') as f:
+        data = f.read()
+        return HttpResponse(data , headers={
+             'Content-Type' : 'audio/mpeg', 
+            'Content-Disposition': 'attachment; filename=' + video_title + '.mp3'
+        })
     
 def download_mp4SD(url, path, res):
 
@@ -208,18 +196,16 @@ def download_mp4SD(url, path, res):
     print(video)
     global SD_title
     SD_title = yt.title
-    video_file=video.download(path)
-    print(video_file)
 
-    #base, ext = os.path.splitext(video_file)
-    #new_file = base + '.mp4'
-    #os.rename(video_file, new_file)
+    with open(os.path.join(BASE_DIR+'/video', SD_title) + '.mp4', 'wb') as f:
+        for data in video.download():
+            f.write(data)
+        f.close()
+        # use this to return a mp4 file
 
-    for item in os.listdir(path):
-        if item.endswith('.mp4'):
-            name = item
-            
-    mp4_path = path + '/' + item
-
-    
-    return mp4_path
+    with open(os.path.join(BASE_DIR+'/video', SD_title) + '.mp4', 'rb') as f:
+        data = f.read()
+        return HttpResponse(data , headers={
+             'Content-Type' : 'audio/mp4', 
+            'Content-Disposition': 'attachment; filename=' + SD_title + '.mp4'
+        })
