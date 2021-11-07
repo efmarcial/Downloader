@@ -197,10 +197,9 @@ def download_mp4SD(url, path, res):
     global SD_title
     SD_title = yt.title
 
-    with open(os.path.join(str(BASE_DIR)+'/staticfiles', SD_title) + '.mp4', 'wb') as f:
         
-        f.write(video.download())
-    f.close()
+    video.download(os.path.join(str(BASE_DIR)+'/staticfiles', SD_title))
+    
         # use this to return a mp4 file
 
     with open(os.path.join(str(BASE_DIR) +'/staticfiles', SD_title) + '.mp4', 'rb') as f:
