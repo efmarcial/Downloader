@@ -202,7 +202,7 @@ def download_mp4SD(url, path, res):
     
         # use this to return a mp4 file
 
-    with open(os.path.join(str(BASE_DIR) +'/staticfiles', SD_title) + '.mp4', 'rb') as f:
+    with open(BASE_DIR /'staticfiles', SD_title + '.mp4', 'rb') as f:
         data = f.read()
         return HttpResponse(data , headers={
              'Content-Type' : 'audio/mp4', 
