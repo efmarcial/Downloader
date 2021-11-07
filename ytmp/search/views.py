@@ -141,13 +141,13 @@ def download_mp4HD(url, path, res):
     video =yt.streams.filter(res = res, progressive="True").first()
 
     
-    with open(os.path.join(BASE_DIR+'/video', title) + '.mp4', 'wb') as f:
+    with open(os.path.join(str(BASE_DIR) +'/video', title) + '.mp4', 'wb') as f:
         for data in video.download():
             f.write(data)
         f.close()
         # use this to return a mp4 file
 
-    with open(os.path.join(BASE_DIR+'/video', title) + '.mp4', 'rb') as f:
+    with open(os.path.join(str(BASE_DIR) +'/video', title) + '.mp4', 'rb') as f:
         data = f.read()
         return HttpResponse(data , headers={
              'Content-Type' : 'audio/mp4', 
@@ -174,13 +174,13 @@ def convert(url,path):
     #os.rename(video_file, new_file)
     
 
-    with open(os.path.join(BASE_DIR+'/video', video_title) + '.mp3', 'wb') as f:
+    with open(os.path.join(str(BASE_DIR) +'/video', video_title) + '.mp3', 'wb') as f:
         for data in video.download():
             f.write(data)
         f.close()
         # use this to return a mp4 file
 
-    with open(os.path.join(BASE_DIR+'/video', video_title) + '.mp3', 'rb') as f:
+    with open(os.path.join(str(BASE_DIR) +'/video', video_title) + '.mp3', 'rb') as f:
         data = f.read()
         return HttpResponse(data , headers={
              'Content-Type' : 'audio/mpeg', 
@@ -197,13 +197,13 @@ def download_mp4SD(url, path, res):
     global SD_title
     SD_title = yt.title
 
-    with open(os.path.join(BASE_DIR+'/video', SD_title) + '.mp4', 'wb') as f:
+    with open(os.path.join(str(BASE_DIR)+'/video', SD_title) + '.mp4', 'wb') as f:
         for data in video.download():
             f.write(data)
         f.close()
         # use this to return a mp4 file
 
-    with open(os.path.join(BASE_DIR+'/video', SD_title) + '.mp4', 'rb') as f:
+    with open(os.path.join(str(BASE_DIR) +'/video', SD_title) + '.mp4', 'rb') as f:
         data = f.read()
         return HttpResponse(data , headers={
              'Content-Type' : 'audio/mp4', 
