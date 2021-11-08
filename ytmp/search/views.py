@@ -103,8 +103,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    #download_path = '/static/media/'
+    download_path = './media/'
 
 
     # Before a file is downloaded check if an mp3 or mp4 file
@@ -143,17 +142,16 @@ def download_mp4HD(url, path, res):
     yt = YouTube(url)
 
     video =yt.streams.filter(res = res, progressive="True").first()
-
+    video.download(path)
     
-    with open(os.path.join(str(BASE_DIR) +'/staticfiles', title) + '.mp4', 'wb') as f:
-        for data in video.download():
-            f.write(data)
-        f.close()
+    
         # use this to return a mp4 file
 
-    with open(os.path.join(str(BASE_DIR) +'/staticfiles', title) + '.mp4', 'rb') as f:
+    with open(path + title + '.mp4', 'rb') as f:
         data = f.read()
-        return HttpResponse(data , headers={
+
+    f.close()
+    return HttpResponse(data , headers={
              'Content-Type' : 'audio/mp4', 
             'Content-Disposition': 'attachment; filename=' + title + '.mp4'
         })
@@ -169,7 +167,7 @@ def convert(url,path):
     video_title = yt.title
 
     # Download video file
-    #video_file=video.download(path)
+    video_file=video.download(path)
     
     # convert mp4 to mp3 file extention
     
@@ -178,15 +176,14 @@ def convert(url,path):
     #os.rename(video_file, new_file)
     
 
-    with open(os.path.join(str(BASE_DIR) +'/staticfiles', video_title) + '.mp3', 'wb') as f:
-        for data in video.download():
-            f.write(data)
-        f.close()
-        # use this to return a mp4 file
+    
+    # use this to return a mp4 file
 
-    with open(os.path.join(str(BASE_DIR) +'/staticfiles', video_title) + '.mp3', 'rb') as f:
+    with open(path + video_title + '.mp3', 'rb') as f:
         data = f.read()
-        return HttpResponse(data , headers={
+
+        f.close()
+    return HttpResponse(data , headers={
              'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename=' + video_title + '.mp3'
         })
@@ -202,13 +199,14 @@ def download_mp4SD(url, path, res):
     SD_title = yt.title
 
         
-    video.download(str(BASE_DIR) +'/search/staticfiles/', SD_title)
+    video.download(path)
     
         # use this to return a mp4 file
 
-    data =open(os.path.join(str(BASE_DIR)+'/search/staticfiles/', SD_title + '.mp4'), 'rb')
+    with open(path + SD_title + '.mp4', 'rb') as f:
+        data = f.read()
     
-    return HttpResponse(data.read() , headers={
+    return HttpResponse(data , headers={
              'Content-Type' : 'audio/mp4', 
             'Content-Disposition': 'attachment; filename=' + SD_title + '.mp4'
         })
