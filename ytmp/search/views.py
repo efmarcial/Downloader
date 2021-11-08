@@ -1,4 +1,5 @@
 
+from datetime import date
 import re
 from django import forms
 import requests 
@@ -137,7 +138,11 @@ def youTube(request):
 def download_mp4HD(url, path, res):
 
 
-    return FileResponse(open(YouTube(url).streams.filter(res=res, progressive="True").first().download(skip_existing=True), 'rb'))
+    data = FileResponse(open(YouTube(url).streams.filter(res=res, progressive="True").first().download(skip_existing=True), 'rb').read())
+    return HttpResponse(data , headers={
+             'Content-Type' : 'audio/mpeg', 
+            'Content-Disposition': 'attachment; filename=' + YouTube(url).title + '.mp3'
+        })
 def convert(url,path):
 
 
