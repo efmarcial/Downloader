@@ -103,7 +103,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = './media/'
+    download_path = './search/media'
 
 
     # Before a file is downloaded check if an mp3 or mp4 file
