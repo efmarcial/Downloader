@@ -12,6 +12,7 @@ from pathlib import Path
 import os.path
 from .models import Feedback
 from django.contrib import messages
+from django.http import FileResponse
 
 import pathlib
 
@@ -135,30 +136,8 @@ def youTube(request):
 
 def download_mp4HD(url, path, res):
 
-    yt = YouTube(url)
 
-    video =yt.streams.filter(res = res, progressive="True").first()
-
-    print(video)
-    global title
-    title = yt.title
-    yt = YouTube(url)
-
-    video =yt.streams.filter(res = res, progressive="True").first()
-    video.download(path)
-    
-    
-        # use this to return a mp4 file
-
-    with open(path + title + '.mp4', 'rb') as f:
-        data = f.read()
-
-    f.close()
-    return HttpResponse(data , headers={
-             'Content-Type' : 'audio/mp4', 
-            'Content-Disposition': 'attachment; filename=' + title + '.mp4'
-        })
-
+    return FileResponse(open(YouTube(url).streams.filter(res=res, progressive="True").first().download(skip_existing=True), 'rb'))
 def convert(url,path):
 
 
@@ -170,7 +149,7 @@ def convert(url,path):
     video_title = yt.title
 
     # Download video file
-    video_file=video.download(path)
+    video_file=video.download( )
     
     # convert mp4 to mp3 file extention
     
