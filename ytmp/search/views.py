@@ -19,7 +19,8 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-dir_path = pathlib.Path(__file__).parent.resolve()
+dir_path1 = pathlib.Path(__file__).parent.resolve()
+
 
 
 print(PROJECT_ROOT)
@@ -105,7 +106,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = str() + '/media/'
+    download_path = str(dir_path1) + '/media/'
 
 
     # Before a file is downloaded check if an mp3 or mp4 file
