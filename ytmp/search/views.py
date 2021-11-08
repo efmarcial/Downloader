@@ -13,7 +13,7 @@ import os.path
 from .models import Feedback
 from django.contrib import messages
 
-
+import pathlib
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here
@@ -103,7 +103,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = './search/media'
+    download_path = os.path.join(pathlib.Path(__file__).parent.resolve(), '/media/')
 
 
     # Before a file is downloaded check if an mp3 or mp4 file
