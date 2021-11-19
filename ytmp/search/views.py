@@ -1,7 +1,4 @@
 
-from datetime import date
-from django import forms
-from django.http.response import FileResponse
 import requests 
 from django.shortcuts import redirect, render
 from django.conf import settings
@@ -11,9 +8,7 @@ import os
 from pytube import YouTube
 from pathlib import Path
 import os.path
-import dropbox
-import tempfile 
-import pathlib
+from django.core.files.storage import default_storage, FileSystemStorage
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here
@@ -150,11 +145,14 @@ def convert(url,video_path):
     video_title = video.title
     filename = video_title+'.mp4'
 
-    video.download(video_path)
-    with open(os.path.join(video_path, filename), 'rb') as f:
-        data = f.read()
+    # saving file in django default storage
+    fs = FileSystemStorage()
+    file_name = fs.save(video.title, video.download())
+    file_url = fs.url(file_name)
 
-    return HttpResponse(data , headers={
+    # reading file from storage
+    
+    return HttpResponse(file_url, headers={
              'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename=' + video_title + '.mp3'
         })
