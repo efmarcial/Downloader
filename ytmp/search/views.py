@@ -136,7 +136,7 @@ def download_mp4HD(url, path, res):
              'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename=' + YouTube(url).title + '.mp3'
         })
-def convert(url,video_path):
+def convert( url,video_path):
     
 
 
@@ -145,12 +145,10 @@ def convert(url,video_path):
     video_title = video.title
     filename = video_title+'.mp4'
 
-    # saving file in django default storage
-    fs = FileSystemStorage()
-    file_name = fs.save(video.title, video.download())
-    file_url = fs.url(file_name)
+    video.download(os.path.join(settings.MEDIA_ROOT))
 
-    # reading file from storage
+    with open(os.path.join(settings.MEDIA_ROOT, filename), 'rb') as f:
+        file_url = f.read()
     
     return HttpResponse(file_url, headers={
              'Content-Type' : 'audio/mpeg', 
