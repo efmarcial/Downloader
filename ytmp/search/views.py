@@ -110,12 +110,7 @@ def youTube(request):
 
     # Before a file is downloaded check if an mp3 or mp4 file
     # exist to be deleted for memory storage
-    tmpDir = os.listdir(download_path)
-    for item in tmpDir:
-        if item.endswith('.mp3') or item.endswith('.mp4') or item.endswith('.3gg'):
-            os.remove(os.path.join(download_path, item))
     
-
     if video_format == 'mp4_hd':
         
         res = "720p"
