@@ -84,12 +84,8 @@ WSGI_APPLICATION = 'ytmp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'db-name',
-        'ENFORCE_SCHEMA': True,
-         'CLIENT': {
-                'host': 'mongodb+srv://user_31:1060@cluster0.xi8ly.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-            }  
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -143,5 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 YOUTUBE_DATA_API_KEY = 'AIzaSyBMg_BuSevAACSpa6qZlC6oFxjHo0uqHEI'
 
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = '2krjy5vqxex4e61'
+DROPBOX_ROOT_PATH = '/'
+DROPBOX_TIMEOUT = 100
+DROPBOX_WRITE_MODE = 'add'
 # Activate Django-Heroku
 django_heroku.settings(locals())

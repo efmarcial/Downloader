@@ -1,7 +1,7 @@
 
 from datetime import date
-import re
 from django import forms
+from django.http.response import FileResponse
 import requests 
 from django.shortcuts import redirect, render
 from django.conf import settings
@@ -11,10 +11,8 @@ import os
 from pytube import YouTube
 from pathlib import Path
 import os.path
-from .models import Feedback
-from django.contrib import messages
-from django.http import FileResponse
-
+import dropbox
+import tempfile 
 import pathlib
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -108,7 +106,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = str(dir_path1) + '/static/search/'
+    download_path = str(BASE_DIR)+'/video/'
 
 
     # Before a file is downloaded check if an mp3 or mp4 file
@@ -144,33 +142,18 @@ def download_mp4HD(url, path, res):
             'Content-Disposition': 'attachment; filename=' + YouTube(url).title + '.mp3'
         })
 def convert(url,path):
+    
 
-
+    # Create a temp dir 
+    temp_dir = tempfile.TemporaryDirectory()
     yt = YouTube(url)
-
-    # only_audio is still downloaded as mp4 need to change ext
-    video =yt.streams.filter(only_audio=True).first()
-        #print(video)
-    video_title = yt.title
-
-    # Download video file
-    video_file=video.download( )
-    
-    # convert mp4 to mp3 file extention
-    
-    #base, ext = os.path.splitext(video_file)
-    #new_file = base + '.mp3'
-    #os.rename(video_file, new_file)
-    
+    video_title = yt.streams.filter(only_audio=True).first().title
+    filename = video_title+'.mp3'
 
     
-    # use this to return a mp4 file
-
-    with open(path + video_title + '.mp3', 'rb') as f:
-        data = f.read()
-
-        f.close()
-    return HttpResponse(data , headers={
+    video = yt.streams.filter(only_audio=True).first()
+    #return FileResponse(open(video.download(skip_existing=True), 'rb'))
+    return HttpResponse(open(video.download(skip_existing=True), 'rb').read() , headers={
              'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename=' + video_title + '.mp3'
         })
