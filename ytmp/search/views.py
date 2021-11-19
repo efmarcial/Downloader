@@ -19,7 +19,6 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Create your views here
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-dir_path1 = pathlib.Path(__file__).parent.resolve()
 
 
 
@@ -106,7 +105,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = settings.FILE_UPLOAD_TEMP_DIR
+    download_path = os.path.join(BASE_DIR, 'media')
 
 
     # Before a file is downloaded check if an mp3 or mp4 file
@@ -130,7 +129,7 @@ def youTube(request):
 
     elif video_format == 'mp3':   
 
-        convert(url=video_url, path=download_path)
+        convert(url=video_url, Video_path=download_path)
 
 
 def download_mp4HD(url, path, res):
@@ -147,19 +146,20 @@ def download_mp4HD(url, path, res):
              'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename=' + YouTube(url).title + '.mp3'
         })
-def convert(url,path):
+def convert(url,video_path):
     
 
     # Create a temp dir 
-    temp_dir = tempfile.TemporaryDirectory()
     yt = YouTube(url)
-    video_title = yt.streams.filter(only_audio=True).first().title
+    video = yt.streams.filter(only_audio=True).first()
+    video_title = video.title
     filename = video_title+'.mp3'
 
-    
-    video = yt.streams.filter(only_audio=True).first()
-    #return FileResponse(open(video.download(skip_existing=True), 'rb'))
-    return HttpResponse(open(video.download(skip_existing=True), 'rb').read() , headers={
+    video.download(video_path)
+    with open(os.path.join(video_path, filename), 'rb') as f:
+        data = f.read()
+
+    return HttpResponse(data , headers={
              'Content-Type' : 'audio/mpeg', 
             'Content-Disposition': 'attachment; filename=' + video_title + '.mp3'
         })
