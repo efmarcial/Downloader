@@ -144,11 +144,11 @@ def download_mp4HD(url, path, res):
 def convert(url,video_path):
     
 
-    # Create a temp dir 
+
     yt = YouTube(url)
     video = yt.streams.filter(only_audio=True).first()
     video_title = video.title
-    filename = video_title+'.mp3'
+    filename = video_title+'.mp4'
 
     video.download(video_path)
     with open(os.path.join(video_path, filename), 'rb') as f:
