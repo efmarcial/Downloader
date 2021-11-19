@@ -106,7 +106,7 @@ def youTube(request):
     
 
     # Path to where the file its going to be downloaded
-    download_path = str(BASE_DIR)
+    download_path = settings.FILE_UPLOAD_TEMP_DIR
 
 
     # Before a file is downloaded check if an mp3 or mp4 file
@@ -136,11 +136,17 @@ def youTube(request):
 def download_mp4HD(url, path, res):
 
 
-    data = FileResponse(open(YouTube(url).streams.filter(res=res, progressive="True").first().download(skip_existing=True), 'rb').read(), as_attachment=True, filename=YouTube(url).streams.first().title+'.mp3')
-    #return HttpResponse(data , headers={
-            # 'Content-Type' : 'audio/mpeg', 
-            #'Content-Disposition': 'attachment; filename=' + YouTube(url).title + '.mp3'
-        #})
+    YT = YouTube(url)
+    video = YT.streams.filter(only_audio=True).first()
+    video.download(path)
+
+    with open(os.path.join(path+'/',video.title+'.mp3'), 'rb') as f:
+        data = f.read()
+
+    return HttpResponse(data , headers={
+             'Content-Type' : 'audio/mpeg', 
+            'Content-Disposition': 'attachment; filename=' + YouTube(url).title + '.mp3'
+        })
 def convert(url,path):
     
 
