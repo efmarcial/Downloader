@@ -1,142 +1,44 @@
-{% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Search YouTube</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'search/favicon.ico' %}">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5870728661073684"
-     crossorigin="anonymous"></script>
-     <script async src="{% static 'search/HelloWorld.js'  %}"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Bootstrap core CSS -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-    <style>
-      .alert {
-    display: none;
-  }
-      #fader {
-          opacity: 0.5;
-          background: black;
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          display: none;
-        }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{% static 'search/album.css' %}" rel="stylesheet">
-    
-  </head>
-  <body>
-
-<main role="main">
-
-  <section class="jumbotron text-center">
-    <div class="container">
-      <div class="text-center">
-        <img src="{% static 'search/YT2MP.png' %}" width="250" height="150" >
-      </div>
-      <p class="lead text-muted">Get the top nine results on YouTube for your query!</p>
-      <form method="POST">
-      <div class="form-row">
-        <div  class="col"></div>
-          
-            {%csrf_token%}
-            <input type="text" name="search" class="form-control border border-primary rounded " aria-label="Username" placeholder="Search YouTube or Paste YouTube link">
-            
-        
-      </div>
-      <div class="col">
-        <button href="#" type="submit" class="btn btn-primary my-2">YouTube Search</button>
-      <!---
-        This was the Im Feeling llucky btn but in this case we dont need it.
-        <button href="#" class="btn btn-secondary my-2">I'm Feeling Lucky</button>
-      -->
-      </div>
-      </div>
-      </form>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div  class="container">
-      <div class="row ">
-        {% csrf_token %}
-        {%for video in videos%}
-        <div  class="col-md-4">
-          <div class="card mb-4 shadow-lg">
-            <img class="bd-placeholder-img card-img-top " width="100%" height="225" src="{{video.thumbnail}}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
-            <div class="card-body border ">
-              <p class="card-text">{{video.title}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div id='divBtn' class="btn-group">
-                  <!-- HTML FORM to pass data to the Django FORM -->
-                <form action="/video/" method="POST">
-                  <div  class="form-row">
-                    
-                  <!-- <a  type="button" href="{{video.url}}" class="btn btn-sm btn-outline-secondary">View</a> -->
-                  {% csrf_token %}
-                  <div class="col">
-                      <select id="vid_format" name="formats" class='form-control form-control-sm' style="max-width:100%">
-                        <option value="mp3">MP3</option>
-                        <option value="mp4_hd">MP4 HD</option>
-                        <option value="mp4_sd">MP4 SD</option>
-                      </select>
-                  </div>
-                  <div class="col">
-                      <input type="submit" id="video_url" name="{{video.url}}" class="btn btn-sm btn-primary" value="Download">
-                      <!--<button id='demo' type="button" onclick='myFunction("{{video.url}}" , "{{video.title}}" );' title="{{video.url}}" class="btn btn-sm btn-outline-secondary" >download</button> -->
-                    </div>
-                    <a type="button" href="{{video.url}}" class="btn btn-sm btn-danger">View</a>
-                    
-                    
-                  
-                  </div>
-                </form>
-                </div>
-                <small class="text-muted">{{video.duration}}</small>
-              </div>
-            </div>
-          </div>
-        </div>
-    
-        {% endfor %}
+  <title>Love Smoothie</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown link
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-    
-  </div>
-
-  <script>
-    
-    $(document).ready(function(){
-      $('#video_url').click(function(){
-          $('.alert').show()
-        }) 
-    });
-
-  </script>
-  <!--<script async src="{% static 'search/script.js' %}"></script> -->
-</main>
+  </nav>
 </body>
 </html>
