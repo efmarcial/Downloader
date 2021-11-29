@@ -43,7 +43,7 @@
       <img class="responsive-image"src="{% static 'search/logoblack.png' %}" alt="logo">
       <h1 class="ml6">
         <span class="text-wrapper">
-          <span class="letters">Coming Soon</span>
+          <span class="letters">I love Smoothie</span>
         </span>
       </h1>
     </div>
@@ -51,6 +51,22 @@
   </div>
 
   <div id='features' style="height: 100%;">
+    <div class="center">
+      <h1 class="ml6">
+        <span class="lettes">Gallary</span>
+      </h1>
+      <p>Use the float classes to float the image to the left or to the right:</p> 
+      <img src="paris.jpg" class="float-left" alt="Paris" width="304" height="236"> 
+      <img src="paris.jpg" class="float-right" alt="Paris" width="304" height="236"> 
+    </div>
+  </div>
+
+  <div id='menu' class="parallax"></div>
+
+  <div style="height: 1000px; background-color: blue; font-size: 36px;">
+    Scroll Up and Down this page to see the parallax scrolling effect.
+    This div is just here to enable scrolling.
+    Tip: Try to remove the background-attachment property to remove the scrolling effect.
     <h2>Automatic Slideshow</h2>
 <p>Change image every 2 seconds:</p>
 
@@ -78,21 +94,34 @@
 <br>
 
 <div style="text-align:center">
-  <span class="dot"></span> 
+  <span cla
+  ss="dot"></span> 
   <span class="dot"></span> 
   <span class="dot"></span> 
 </div>
   </div>
 
-  <div id='menu' class="parallax"></div>
+  <div id='contact'class="parallax">
+  <div class="clearfix " style="padding-top: 5%;">
+    <div class="container">
+      <form action="" method="post">
+        {% csrf_token %}
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-  <div style="height: 1000px; background-color: blue; font-size: 36px;">
-    Scroll Up and Down this page to see the parallax scrolling effect.
-    This div is just here to enable scrolling.
-    Tip: Try to remove the background-attachment property to remove the scrolling effect.
+
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+        <label for="subject">Subject</label>
+        <textarea name="subject" id="subject" style="height: 200px;" placeholder="Write something.."></textarea>
+
+        <input type="submit" value="Submit">
+      </form>
+    </div>
   </div>
 
-  <div id='contact'class="parallax"></div>
+  </div>
 
 
 

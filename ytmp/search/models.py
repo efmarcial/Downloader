@@ -1,15 +1,15 @@
-from os import name
-from re import UNICODE
+
 from django.db import models
-from django.core.files.storage import FileSystemStorage
 
+class Contact(models.Model):
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
 
-# Create your models here.
+    def __str__(self):
+        return self.email
 
-fs = FileSystemStorage(location='/media/videos')
-
-
-# Contact us model
-
-class upload(models.Model):
-    video =models.FileField(upload_to='media')
+class imggal(models.Model):
+    imgTitle = models.CharField(max_length=100)
+    imgDsec = models.CharField(max_length=500)
+    img = models.ImageField(upload_to = 'images/')

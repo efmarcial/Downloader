@@ -3,12 +3,11 @@ import requests
 from django.shortcuts import redirect, render
 from django.conf import settings
 from django.http import HttpResponse
-import os
-from pathlib import Path
-import os.path
+from .forms import ContactForm
 
 
 def index(request):
-
+    form = ContactForm()
+    context = {'form': form}
     return render(request, 'search/index.html')
 

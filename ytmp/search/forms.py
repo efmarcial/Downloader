@@ -1,5 +1,8 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Contact
 
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
+
+class ContactForm(ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
