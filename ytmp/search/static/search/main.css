@@ -18,6 +18,10 @@ body, html {
     background-size: cover;
 }
 
+.navbar-inner {
+    background:transparent;
+}
+
 * {
     margin: 0;
     padding: 0;
