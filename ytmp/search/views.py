@@ -15,5 +15,5 @@ def index(request):
         'imggal' : resultsdisplay,
         'post' : 'post'
     }
-    return render(request, 'search/index.html', {'imggal':resultsdisplay})
+    return render(request, 'search/index.html', {'imggals':resultsdisplay})
 
