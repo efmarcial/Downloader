@@ -14,9 +14,11 @@
 <!-- <img src="{% static 'search/logo.png' %}" alt="logo" width="55" height="55"> -->
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top " style="background: linear-gradient( rgba(0, 0, 0, 1), rgba(0,0,0,0));">
+    <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="{% static 'search/logo.png' %}" alt="logo" width="55" height="55">
+      <img src="{% static 'search/logo.png' %}" alt="" width="55" height="55">
     </a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -50,16 +52,26 @@
   
   </div>
 
-  <div id='features' style="height: 100%;">
-    <div class="center">
-      <h1 class="ml6">
-        <span class="lettes">Gallary</span>
-      </h1>
-      <p>Use the float classes to float the image to the left or to the right:</p> 
-      <img src="paris.jpg" class="float-left" alt="Paris" width="304" height="236"> 
-      <img src="paris.jpg" class="float-right" alt="Paris" width="304" height="236"> 
+    <div class="container-fluid">
+      <div id='features' style="height: 100%;">
+        <div class="center">
+          <h1 class="ml6">
+            <span class="text-wrapper">
+              <span class="letters">Gallary</span>
+            </span>
+          </h1>
+        </div>
+      <div class="row">
+      {% for results in imggal %}
+      <div class="col-3">
+
+        <img class='img-fluid img-thumbnail rounded mx-auto d-block'  src="{{results.img.url}}" alt="{{results.imgTitle}}" title="{{results.imgTitle}}" width="220" height="250" style="padding-bottom: 4%;">
+        </div>
+      {% endfor %}
+      </div>
     </div>
-  </div>
+    </div>
+
 
   <div id='menu' class="parallax"></div>
 
