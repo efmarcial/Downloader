@@ -8,7 +8,6 @@ class Contact(models.Model):
   message = models.TextField()
 
 class image(models.Model):
-    tilte = models.CharField(max_length=100)
     img = models.ImageField(upload_to = 'images/')
 
 
