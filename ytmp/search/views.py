@@ -12,7 +12,8 @@ def index(request):
     
     resultsdisplay = imggal.objects.all()
     context = {
-        'imggal' : resultsdisplay
+        'imggal' : resultsdisplay,
+        'post' : 'post'
     }
-    return render(request, 'search/index.html', {'imggal':resultsdisplay})
+    return render(request, 'search/index.html', context)
 
