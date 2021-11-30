@@ -65,7 +65,6 @@
       {% csrf_token %}
       {% for results in imggal %}
       <div class="col-3">
-        {% csrf_token %}
         <img class='img-fluid img-thumbnail rounded mx-auto d-block'  src="{{results.img.url}}" alt="{{results.imgTitle}}" title="{{results.imgTitle}}" width="220" height="250" style="padding-bottom: 4%;">
         </div>
       {% endfor %}
