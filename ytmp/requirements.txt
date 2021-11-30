@@ -6,3 +6,5 @@ requests
 pytube
 pymongo
 dropbox
+psycopg2-binary
+dj-database-url
