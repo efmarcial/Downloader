@@ -3,17 +3,16 @@ import requests
 from django.shortcuts import redirect, render
 from django.conf import settings
 from django.http import HttpResponse
-from .forms import ContactForm
 
-from .models import imggal
+from .models import Image
 
 
 def index(request):
     
-    resultsdisplay = imggal.objects.all()
+    resultsdisplay = Image.objects.all()
     context = {
-        'imggal' : resultsdisplay,
+        'Image' : resultsdisplay,
         'post' : 'post'
     }
-    return render(request, 'search/index.html', {'imggals':resultsdisplay})
+    return render(request, 'search/index.html', {'Images':resultsdisplay})
 
