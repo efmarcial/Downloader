@@ -4,15 +4,15 @@ from django.shortcuts import redirect, render
 from django.conf import settings
 from django.http import HttpResponse
 
-from .models import Image
+from .models import image
 
 
 def index(request):
     
-    resultsdisplay = Image.objects.all()
+    resultsdisplay = image.objects.all()
     context = {
-        'Image' : resultsdisplay,
+        'image' : resultsdisplay,
         'post' : 'post'
     }
-    return render(request, 'search/index.html', {'Images':resultsdisplay})
+    return render(request, 'search/index.html', {'image':resultsdisplay})
 
