@@ -177,10 +177,11 @@
       <li><a href="#features">Gallery</a></li>
       <li><a href="#menu">Menu</a></li>
     </ul>
-    
-    <p><span>CALL US : (714)605-0679</span></p>
-    <p><span>7151 kateila Ave, Stanton CA 90680</span></p>
+    {% for item in info %}
+    <p><span>CALL US : {{item.phone}}</span></p>
+    <p><span>{{item.address}}</span></p>
     <p><span>&copy;</span>2021 Smoothie | All Rights Reserved</p>
+    {% endfor %}
     
   </footer>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

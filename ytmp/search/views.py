@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.conf import settings
 from django.http import HttpResponse
 
-from .models import image, menu, Contact
+from .models import image, menu, Contact, information
 
 
 def index(request):
@@ -18,9 +18,12 @@ def index(request):
     
     image_display = image.objects.all()
     menu_display = menu.objects.all()
+    info = information.objects.all
     context = {
         'image' : image_display,
-        'item' : menu_display
+        'item' : menu_display, 
+        'info' : info
     }
+    
     return render(request, 'search/index.html', context)
 
