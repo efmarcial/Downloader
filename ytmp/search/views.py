@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.conf import settings
 from django.http import HttpResponse
 
-from .models import Image, Menu, Contact, Shop_Information
+from .models import image, menu, Contact, information
 
 
 def index(request):
@@ -16,9 +16,9 @@ def index(request):
         contact = Contact(name=name, email=email, message=message)
         contact.save()
     
-    image_display = Image.objects.all()
-    menu_display = Menu.objects.all()
-    info = Shop_Information.objects.all
+    image_display = image.objects.all()
+    menu_display = menu.objects.all()
+    info = information.objects.all
     context = {
         'image' : image_display,
         'item' : menu_display, 
