@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import image, menu, Contact, information
+from .models import Image, Menu, Contact, Shop_Information
 
-admin.site.register(image)
-admin.site.register(menu)
+admin.site.register(Image)
+admin.site.register(Menu)
 admin.site.register(Contact)
-admin.site.register(information)
+admin.site.register(Shop_Information)

@@ -123,8 +123,8 @@
         {% csrf_token %}
         {% for item in item%}  
         <div class="col">
-          <h2 class="menu1">{{item.title}}</h2>
-          <p>{{item.discription}}</p>
+          <h2 class="menu1">{{item.product}}</h2>
+          <p>{{item.description}}</p>
           <p style="background: #e43584;border-radius: 11px;"><span style="color: white;">{{item.price}}</span></p>
         </div>
       
@@ -168,7 +168,7 @@
       <div class="wave" id="wave4"></div>
     </div>
     <ul class="social_icon">
-      <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+      <li><a href="https://www.facebook.com/ilovesmoothiesnutritions"><ion-icon name="logo-facebook"></ion-icon></a></li>
     </ul>
     
 
@@ -179,6 +179,7 @@
     </ul>
     {% for item in info %}
     <p><span>CALL US : {{item.phone}}</span></p>
+    <p><span>{{item.email}}</span></p>
     <p><span>{{item.address}}</span></p>
     <p><span>&copy;</span>2021 Smoothie | All Rights Reserved</p>
     {% endfor %}

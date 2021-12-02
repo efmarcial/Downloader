@@ -7,16 +7,18 @@ class Contact(models.Model):
   email = models.EmailField(max_length=120)
   message = models.TextField()
 
-class image(models.Model):
+class Image(models.Model):
+    image_title = models.CharField(max_length=100)
     img = models.ImageField(upload_to = 'images/')
 
 
-class menu(models.Model):
+class Menu(models.Model):
 
-    title = models.CharField(max_length=50)
-    discription = models.CharField(max_length=50)
+    product = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
 
-class information(models.Model):
+class Shop_Information(models.Model):
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
