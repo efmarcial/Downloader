@@ -14,6 +14,8 @@ from pathlib import Path
 from django.db.models import base
 import django_heroku
 import os
+import mongoengine
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,8 +86,12 @@ WSGI_APPLICATION = 'ytmp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'smoothie',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT' :{
+            'host' : 'mongodb+srv://eduardo:9211060@smoothie.n0akq.mongodb.net/smoothie?retryWrites=true&w=majority'
+        }
     }
 }
 
