@@ -3,9 +3,7 @@ django
 django-heroku
 isodate
 requests
-pytube
 pymongo
-dropbox
 psycopg2-binary
 dj-database-url
 pillow
@@ -13,3 +11,5 @@ djongo
 mongoengine
 pymongo[srv]
 dnspython
+django-storages
+boto3

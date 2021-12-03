@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-   
 ]
 
 MIDDLEWARE = [
@@ -95,9 +94,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -150,3 +146,8 @@ YOUTUBE_DATA_API_KEY = 'AIzaSyBMg_BuSevAACSpa6qZlC6oFxjHo0uqHEI'
 
 # Activate Django-Heroku
 django_heroku.settings(locals())
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'AKIA22A575SYKQAQDZVE'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'smoothiebucket'
