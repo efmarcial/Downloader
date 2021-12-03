@@ -11,3 +11,5 @@ dj-database-url
 pillow
 djongo
 mongoengine
+pymongo[srv]
+dnspython
